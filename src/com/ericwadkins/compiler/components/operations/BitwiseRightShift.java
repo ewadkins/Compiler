@@ -11,9 +11,9 @@ import java.util.List;
 /**
  * Created by ericwadkins on 8/11/16.
  */
-public class BitwiseRight extends BinaryOperation {
+public class BitwiseRightShift extends BinaryOperation {
 
-    public BitwiseRight(Expression expression1, Expression expression2, Block parent, Token token) {
+    public BitwiseRightShift(Expression expression1, Expression expression2, Block parent, Token token) {
         super(expression1, expression2, parent, token);
     }
 

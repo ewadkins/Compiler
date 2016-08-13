@@ -653,32 +653,32 @@ public class CompilerMainListener implements CompilerListener {
         }
         else if (ctx.bitleft_right() != null) {
             if (ctx.bitleft_right().getText().equals("<<")) {
-                if (debug) System.out.println("Exiting BitwiseLeft");
+                if (debug) System.out.println("Exiting BitwiseLeftShift");
 
                 List<Expression> expressions = new ArrayList<>();
                 expressions.add((Expression) stack.pop());
                 expressions.add((Expression) stack.pop());
                 Collections.reverse(expressions);
 
-                BitwiseLeft bitwiseLeft =
-                        new BitwiseLeft(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
-                stack.push(bitwiseLeft);
+                BitwiseLeftShift bitwiseLeftShift =
+                        new BitwiseLeftShift(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(bitwiseLeftShift);
 
-                if (debug) System.out.println("\t" + bitwiseLeft);
+                if (debug) System.out.println("\t" + bitwiseLeftShift);
             }
             else if (ctx.bitleft_right().getText().equals(">>")) {
-                if (debug) System.out.println("Exiting BitwiseRight");
+                if (debug) System.out.println("Exiting BitwiseRightShift");
 
                 List<Expression> expressions = new ArrayList<>();
                 expressions.add((Expression) stack.pop());
                 expressions.add((Expression) stack.pop());
                 Collections.reverse(expressions);
 
-                BitwiseRight bitwiseRight =
-                        new BitwiseRight(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
-                stack.push(bitwiseRight);
+                BitwiseRightShift bitwiseRightShift =
+                        new BitwiseRightShift(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(bitwiseRightShift);
 
-                if (debug) System.out.println("\t" + bitwiseRight);
+                if (debug) System.out.println("\t" + bitwiseRightShift);
             }
         }
         else if (ctx.less_greater() != null) {
