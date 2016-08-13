@@ -42,13 +42,37 @@ public class CompilerBaseListener implements CompilerListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBasic_element(CompilerParser.Basic_elementContext ctx) { }
+	@Override public void enterStatement(CompilerParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBasic_element(CompilerParser.Basic_elementContext ctx) { }
+	@Override public void exitStatement(CompilerParser.StatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBasic_statement(CompilerParser.Basic_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBasic_statement(CompilerParser.Basic_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFlow_statement(CompilerParser.Flow_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFlow_statement(CompilerParser.Flow_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -78,18 +102,6 @@ public class CompilerBaseListener implements CompilerListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNative_block(CompilerParser.Native_blockContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNative_block(CompilerParser.Native_blockContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterDeclaration(CompilerParser.DeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -114,6 +126,18 @@ public class CompilerBaseListener implements CompilerListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterAssignment(CompilerParser.AssignmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAssignment(CompilerParser.AssignmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDiscarded_statement(CompilerParser.Discarded_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -126,13 +150,37 @@ public class CompilerBaseListener implements CompilerListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssignment(CompilerParser.AssignmentContext ctx) { }
+	@Override public void enterReturn_statement(CompilerParser.Return_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAssignment(CompilerParser.AssignmentContext ctx) { }
+	@Override public void exitReturn_statement(CompilerParser.Return_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBreak_statement(CompilerParser.Break_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBreak_statement(CompilerParser.Break_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterContinue_statement(CompilerParser.Continue_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitContinue_statement(CompilerParser.Continue_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -342,6 +390,54 @@ public class CompilerBaseListener implements CompilerListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDo_while_loop(CompilerParser.Do_while_loopContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDo_while_loop(CompilerParser.Do_while_loopContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterInitialization(CompilerParser.InitializationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInitialization(CompilerParser.InitializationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCondition(CompilerParser.ConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCondition(CompilerParser.ConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterUpdate(CompilerParser.UpdateContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitUpdate(CompilerParser.UpdateContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFunction(CompilerParser.FunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -349,18 +445,6 @@ public class CompilerBaseListener implements CompilerListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFunction(CompilerParser.FunctionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterReturn_statement(CompilerParser.Return_statementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitReturn_statement(CompilerParser.Return_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -397,6 +481,18 @@ public class CompilerBaseListener implements CompilerListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitPrefix_unary(CompilerParser.Prefix_unaryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCast(CompilerParser.CastContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCast(CompilerParser.CastContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -589,6 +685,18 @@ public class CompilerBaseListener implements CompilerListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCharacter(CompilerParser.CharacterContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBool(CompilerParser.BoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBool(CompilerParser.BoolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

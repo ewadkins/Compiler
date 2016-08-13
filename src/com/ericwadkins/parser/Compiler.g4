@@ -11,22 +11,30 @@ import Configuration;
 
 root: element* EOF;
 
-element: basic_element | block_element;
+element: statement | block_element;
 
-basic_element: (declaration | instantiation | assignment | discarded_statement | return_statement) ';';
-block_element: if_statement | else_if_statement | else_statement | function | block | native_block;
-
+statement: (basic_statement | flow_statement) ';';
+basic_statement: declaration | instantiation | assignment | discarded_statement;
+flow_statement: return_statement | break_statement | continue_statement;
+block_element: if_statement | else_if_statement | else_statement | for_loop | while_loop | do_while_loop
+    | function | block;
 block: '{' element* '}';
-native_block: NATIVE '{' .*? '}';
 
-NATIVE: 'native';
+//native_block: NATIVE '{' .*? '}';
+//NATIVE: 'native';
 
 declaration: type variable;
 instantiation: type variable '=' expression;
-discarded_statement: expression;
-
 assignment: direct_assign | sum_assign | difference_assign | product_assign | quotient_assign | modulus_assign
     | power_assign | bit_left_assign | bit_right_assign | bit_and_assign | bit_xor_assign | bit_or_assign;
+discarded_statement: expression;
+return_statement: RETURN expression;
+break_statement: BREAK;
+continue_statement: CONTINUE;
+
+RETURN: 'return';
+BREAK: 'break';
+CONTINUE: 'continue';
 
 direct_assign: variable '=' expression;
 sum_assign: variable '+=' expression;
@@ -42,25 +50,30 @@ bit_xor_assign: variable '^=' expression;
 bit_or_assign: variable '|=' expression;
 
 if_statement: IF '(' expression ')' element;
-else_if_statement: ELSE IF '(' expression ')' element;
+else_if_statement: ELSE IF '(' expression? ')' element;
 else_statement: ELSE element;
 IF: 'if';
 ELSE: 'else';
 
-for_loop: FOR '(' expression ')' element;
-while_loop: WHILE '(' expression ')' element;
+for_loop: FOR '(' initialization? ';' condition? ';' update? ')' element;
+while_loop: WHILE '(' condition? ')' element;
+do_while_loop: DO element WHILE '(' condition? ')' ';';
+
+initialization: basic_statement;
+condition: expression;
+update: declaration | instantiation | assignment | discarded_statement; // any basic_statement except declaration
 FOR: 'for';
 WHILE: 'while';
+DO: 'do';
 
 function: type variable ('(' ((type variable ',')* type variable)? ')') element;
-return_statement: RETURN expression;
-RETURN: 'return';
 
 expression
     : '(' expression ')'
-    | number | string | character | array | variable
+    | number | string | character | bool | array | variable
     | expression postfix_call_subscript
     | prefix_unary expression
+    | cast expression
     | expression pow_root expression
     | expression mult_div_mod expression
     | expression add_sub expression
@@ -75,12 +88,13 @@ expression
 
 postfix_call_subscript: '++' | '--' | '(' ((expression ',')* expression)? ')' | '[' expression ']';
 prefix_unary: '++' | '--' | '+' | '-' | '!' | '~';
+cast: '(' type ')';
 pow_root: '**' | '//';
 mult_div_mod: '*' | '/' | '%';
 add_sub: '+' | '-';
 bitleft_right: '<<' | '>>';
 less_greater: '<' | '<=' | '>' | '>=';
-equal_notequal: '==' | '!=';
+equal_notequal: '==' | '!=' | '===';
 bitand: '&';
 bitxor: '^';
 bitor: '|';
@@ -92,6 +106,7 @@ variable: VARIABLE;
 number: NUMBER;
 string: STRING;
 character: CHARACTER;
+bool: BOOLEAN;
 array: '[' ((expression ',')* expression)? ']';
 
 TYPE: 'char' | 'unsigned char' | 'signed char'
@@ -99,12 +114,15 @@ TYPE: 'char' | 'unsigned char' | 'signed char'
     | 'short int' | 'unsigned short int' | 'signed short int'
     | 'long int' | 'unsigned long int' | 'signed long int'
     | 'float' | 'double' | 'long double' | 'wchar_t'
-    | 'bool' | 'void'
+    | 'boolean' | 'void'
     | 'string';
-VARIABLE: [_a-zA-Z] [_a-zA-Z0-9]*;
 NUMBER: [0-9]+ (',' [0-9]+)* ('.' [0-9]*)?;
 STRING: '"' ('\"' | .)*? ~[\\] '"' | '""'; // Matches anything in double quotes. Allows for escaped double quote character.
 CHARACTER: '\'' '\\'? . '\'' | '\'\'';
+BOOLEAN: 'true' | 'false';
+
+// Must be at the end to allow catching of keywords first
+VARIABLE: [_a-zA-Z] [_a-zA-Z0-9]*;
 
 /* Tell Antlr to ignore spaces around tokens. */
 WHITESPACE : [ \t\r\n]+ -> skip;

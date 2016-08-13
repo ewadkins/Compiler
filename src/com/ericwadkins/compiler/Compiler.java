@@ -62,15 +62,15 @@ public class Compiler {
                     frame.setVisible(true);
                 }
 
-                System.out.println("Compiling...\n########################################");
+                /*System.out.println("Compiling...\n########################################");
                 List<Block> blocks = ((CompilerMainListener) listener).getBlocks();
                 long startCompiling = System.nanoTime();
                 compile(blocks);
                 long endCompiling = System.nanoTime();
-                System.out.println("########################################\n");
+                System.out.println("########################################\n");*/
 
                 System.out.println("Parse time: " + (endParsing - startParsing) / 1000000.0 + " ms");
-                System.out.println("Compile time: " + (endCompiling - startCompiling) / 1000000.0 + " ms");
+                //System.out.println("Compile time: " + (endCompiling - startCompiling) / 1000000.0 + " ms");
 
 
             } catch(Exception e) {

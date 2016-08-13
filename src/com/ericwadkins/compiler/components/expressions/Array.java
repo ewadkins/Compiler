@@ -29,11 +29,11 @@ public class Array extends Primitive {
 
     @Override
     public java.lang.String toString() {
-        java.lang.String string = "[ ";
+        java.lang.String string = "[";
         for (int i = 0; i < expressions.size(); i++) {
             string += expressions.get(i).toString() + (i < expressions.size() - 1 ? ", " : "");
         }
-        string += " ]";
+        string += "]";
         return string;
     }
 }

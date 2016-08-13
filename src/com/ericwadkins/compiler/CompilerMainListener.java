@@ -3,6 +3,7 @@ package com.ericwadkins.compiler;
 
 import com.ericwadkins.compiler.components.elements.*;
 import com.ericwadkins.compiler.components.expressions.*;
+import com.ericwadkins.compiler.components.expressions.Boolean;
 import com.ericwadkins.compiler.components.expressions.Character;
 import com.ericwadkins.compiler.components.expressions.Number;
 import com.ericwadkins.compiler.components.expressions.String;
@@ -65,9 +66,17 @@ public class CompilerMainListener implements CompilerListener {
 
 	@Override public void exitElement(CompilerParser.ElementContext ctx) { }
 
-    @Override public void enterBasic_element(CompilerParser.Basic_elementContext ctx) { }
+    @Override public void enterStatement(CompilerParser.StatementContext ctx) { }
 
-    @Override public void exitBasic_element(CompilerParser.Basic_elementContext ctx) { }
+    @Override public void exitStatement(CompilerParser.StatementContext ctx) { }
+
+    @Override public void enterBasic_statement(CompilerParser.Basic_statementContext ctx) { }
+
+    @Override public void exitBasic_statement(CompilerParser.Basic_statementContext ctx) {}
+
+    @Override public void enterFlow_statement(CompilerParser.Flow_statementContext ctx) { }
+
+    @Override public void exitFlow_statement(CompilerParser.Flow_statementContext ctx) { }
 
     @Override public void enterBlock_element(CompilerParser.Block_elementContext ctx) { }
 
@@ -95,10 +104,6 @@ public class CompilerMainListener implements CompilerListener {
 
         if (debug) System.out.println(block);
     }
-
-    @Override public void enterNative_block(CompilerParser.Native_blockContext ctx) { }
-
-    @Override public void exitNative_block(CompilerParser.Native_blockContext ctx) { }
 
     @Override public void enterDeclaration(CompilerParser.DeclarationContext ctx) { }
 
@@ -321,7 +326,6 @@ public class CompilerMainListener implements CompilerListener {
 
         Element element = (Element) stack.pop();
         Expression expression = (Expression) stack.pop();
-
         Block block;
         if (!(element instanceof Block)) {
             block = new Block(blocks.peek(), ctx.getStart());
@@ -345,7 +349,6 @@ public class CompilerMainListener implements CompilerListener {
 
         Element element = (Element) stack.pop();
         Expression expression = (Expression) stack.pop();
-
         Block block;
         if (!(element instanceof Block)) {
             block = new Block(blocks.peek(), ctx.getStart());
@@ -368,7 +371,6 @@ public class CompilerMainListener implements CompilerListener {
         if (debug) System.out.println("Exiting ElseStatement");
 
         Element element = (Element) stack.pop();
-
         Block block;
         if (!(element instanceof Block)) {
             block = new Block(blocks.peek(), ctx.getStart());
@@ -389,15 +391,107 @@ public class CompilerMainListener implements CompilerListener {
 
     @Override
     public void exitFor_loop(CompilerParser.For_loopContext ctx) {
+        System.out.println("Exiting ForLoop");
 
+        Element element = (Element) stack.pop();
+        Block block;
+        if (!(element instanceof Block)) {
+            block = new Block(blocks.peek(), ctx.getStart());
+            block.add(element);
+            blockList.add(block);
+        }
+        else {
+            block = (Block) element;
+        }
+
+        Element update = null;
+        if (ctx.update() != null) {
+            update = (Element) stack.pop();
+        }
+
+        Expression condition = null;
+        if (ctx.condition() != null) {
+            condition = (Expression) stack.pop();
+        }
+
+        Element initialization = null;
+        if (ctx.initialization() != null) {
+            initialization = (Element) stack.pop();
+        }
+
+        ForLoop forLoop = new ForLoop(initialization, condition, update, block, blocks.peek(), ctx.getStart());
+        stack.push(forLoop);
+
+        if (debug) System.out.println("\t" + forLoop);
     }
 
     @Override public void enterWhile_loop(CompilerParser.While_loopContext ctx) { }
 
     @Override
     public void exitWhile_loop(CompilerParser.While_loopContext ctx) {
+        System.out.println("Exiting WhileLoop");
 
+        Element element = (Element) stack.pop();
+        Block block;
+        if (!(element instanceof Block)) {
+            block = new Block(blocks.peek(), ctx.getStart());
+            block.add(element);
+            blockList.add(block);
+        }
+        else {
+            block = (Block) element;
+        }
+
+        Expression condition = null;
+        if (ctx.condition() != null) {
+            condition = (Expression) stack.pop();
+        }
+
+        WhileLoop whileLoop = new WhileLoop(condition, block, blocks.peek(), ctx.getStart());
+        stack.push(whileLoop);
+
+        if (debug) System.out.println("\t" + whileLoop);
     }
+
+    @Override public void enterDo_while_loop(CompilerParser.Do_while_loopContext ctx) { }
+
+    @Override
+    public void exitDo_while_loop(CompilerParser.Do_while_loopContext ctx) {
+        System.out.println("Exiting DoWhileLoop");
+
+        Expression condition = null;
+        if (ctx.condition() != null) {
+            condition = (Expression) stack.pop();
+        }
+
+        Element element = (Element) stack.pop();
+        Block block;
+        if (!(element instanceof Block)) {
+            block = new Block(blocks.peek(), ctx.getStart());
+            block.add(element);
+            blockList.add(block);
+        }
+        else {
+            block = (Block) element;
+        }
+
+        DoWhileLoop doWhileLoop = new DoWhileLoop(condition, block, blocks.peek(), ctx.getStart());
+        stack.push(doWhileLoop);
+
+        if (debug) System.out.println("\t" + doWhileLoop);
+    }
+
+    @Override public void enterInitialization(CompilerParser.InitializationContext ctx) { }
+
+    @Override public void exitInitialization(CompilerParser.InitializationContext ctx) { }
+
+    @Override public void enterCondition(CompilerParser.ConditionContext ctx) { }
+
+    @Override public void exitCondition(CompilerParser.ConditionContext ctx) { }
+
+    @Override public void enterUpdate(CompilerParser.UpdateContext ctx) { }
+
+    @Override public void exitUpdate(CompilerParser.UpdateContext ctx) { }
 
     @Override public void enterFunction(CompilerParser.FunctionContext ctx) { }
 
@@ -407,7 +501,6 @@ public class CompilerMainListener implements CompilerListener {
         int parameterCount = ctx.type().size() - 1;
 
         Element element = (Element) stack.pop();
-
         Block block;
         if (!(element instanceof Block)) {
             block = new Block(blocks.peek(), ctx.getStart());
@@ -449,7 +542,31 @@ public class CompilerMainListener implements CompilerListener {
         if (debug) System.out.println("\t" + returnStatement);
     }
 
-	@Override public void enterExpression(CompilerParser.ExpressionContext ctx) { }
+    @Override public void enterBreak_statement(CompilerParser.Break_statementContext ctx) { }
+
+    @Override
+    public void exitBreak_statement(CompilerParser.Break_statementContext ctx) {
+        if (debug) System.out.println("Exiting BreakStatement");
+
+        BreakStatement breakStatement = new BreakStatement(blocks.peek(), ctx.getStart());
+        stack.push(breakStatement);
+
+        if (debug) System.out.println("\t" + breakStatement);
+    }
+
+    @Override public void enterContinue_statement(CompilerParser.Continue_statementContext ctx) { }
+
+    @Override
+    public void exitContinue_statement(CompilerParser.Continue_statementContext ctx) {
+        if (debug) System.out.println("Exiting ContinueStatement");
+
+        ContinueStatement continueStatement = new ContinueStatement(blocks.peek(), ctx.getStart());
+        stack.push(continueStatement);
+
+        if (debug) System.out.println("\t" + continueStatement);
+    }
+
+    @Override public void enterExpression(CompilerParser.ExpressionContext ctx) { }
 
 	@Override public void exitExpression(CompilerParser.ExpressionContext ctx) {
         if (ctx.postfix_call_subscript() != null) {
@@ -474,7 +591,7 @@ public class CompilerMainListener implements CompilerListener {
             else if (ctx.postfix_call_subscript().getText().startsWith("(")) {
                 if (debug) System.out.println("Exiting Call");
 
-                int expressionCount = ctx.expression().size();
+                int expressionCount = ctx.postfix_call_subscript().expression().size();
                 List<Expression> expressions = new ArrayList<>();
                 for (int i = 0; i < expressionCount; i++) {
                     expressions.add((Expression) stack.pop());
@@ -551,6 +668,19 @@ public class CompilerMainListener implements CompilerListener {
                 stack.push(bitwiseNot);
 
                 if (debug) System.out.println("\t" + bitwiseNot);
+            }
+        }
+        else if (ctx.cast() != null) {
+            if (ctx.cast().getText().startsWith("(")) {
+                if (debug) System.out.println("Exiting Cast");
+
+                Expression expression = (Expression) stack.pop();
+                Type type = (Type) stack.pop();
+
+                Cast cast = new Cast(type, expression, blocks.peek(), ctx.getStart());
+                stack.push(cast);
+
+                if (debug) System.out.println("\t" + cast);
             }
         }
         else if (ctx.pow_root() != null) {
@@ -765,6 +895,20 @@ public class CompilerMainListener implements CompilerListener {
 
                 if (debug) System.out.println("\t" + notEqual);
             }
+            else if (ctx.equal_notequal().getText().equals("===")) {
+                if (debug) System.out.println("Exiting ReferenceEqual");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                ReferenceEqual referenceEqual =
+                        new ReferenceEqual(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(referenceEqual);
+
+                if (debug) System.out.println("\t" + referenceEqual);
+            }
         }
         else if (ctx.bitand() != null) {
             if (ctx.bitand().getText().equals("&")) {
@@ -852,6 +996,10 @@ public class CompilerMainListener implements CompilerListener {
     @Override public void enterPrefix_unary(CompilerParser.Prefix_unaryContext ctx) { }
 
     @Override public void exitPrefix_unary(CompilerParser.Prefix_unaryContext ctx) { }
+
+    @Override public void enterCast(CompilerParser.CastContext ctx) { }
+
+    @Override public void exitCast(CompilerParser.CastContext ctx) { }
 
     @Override public void enterPow_root(CompilerParser.Pow_rootContext ctx) { }
 
@@ -957,7 +1105,19 @@ public class CompilerMainListener implements CompilerListener {
         if (debug) System.out.println("\t" + character);
     }
 
-	@Override public void enterArray(CompilerParser.ArrayContext ctx) { }
+    @Override public void enterBool(CompilerParser.BoolContext ctx) { }
+
+    @Override
+    public void exitBool(CompilerParser.BoolContext ctx) {
+        if (debug) System.out.println("Exiting Boolean");
+
+        Boolean bool = new Boolean(ctx.BOOLEAN().getText(), blocks.peek(), ctx.getStart());
+        stack.push(bool);
+
+        if (debug) System.out.println("\t" + bool);
+    }
+
+    @Override public void enterArray(CompilerParser.ArrayContext ctx) { }
 
 	@Override public void exitArray(CompilerParser.ArrayContext ctx) {
         if (debug) System.out.println("Exiting Array");
