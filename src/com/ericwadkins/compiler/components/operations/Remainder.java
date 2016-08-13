@@ -11,15 +11,15 @@ import java.util.List;
 /**
  * Created by ericwadkins on 8/11/16.
  */
-public class Quotient extends BinaryOperation {
+public class Remainder extends BinaryOperation {
 
-    public Quotient(Expression expression1, Expression expression2, Block parent, Token token) {
+    public Remainder(Expression expression1, Expression expression2, Block parent, Token token) {
         super(expression1, expression2, parent, token);
     }
 
     @Override
-    public java.lang.String toString() {
-        return "(" + expression1 + " / " + expression2 + ")";
+    public String toString() {
+        return "(" + expression1 + " % " + expression2 + ")";
     }
 
 }

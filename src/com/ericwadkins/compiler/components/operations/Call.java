@@ -14,12 +14,12 @@ import java.util.List;
  */
 public class Call extends Operation {
 
-    protected final Variable variable;
+    protected final Expression expression;
     protected final List<Expression> expressions;
 
-    public Call(Variable variable, List<Expression> expressions, Block parent, Token token) {
+    public Call(Expression expression, List<Expression> expressions, Block parent, Token token) {
         super(parent, token);
-        this.variable = variable;
+        this.expression = expression;
         this.expressions = expressions;
     }
 
@@ -34,7 +34,7 @@ public class Call extends Operation {
 
     @Override
     public java.lang.String toString() {
-        java.lang.String string = variable + "(";
+        java.lang.String string = expression + "(";
         for (int i = 0; i < expressions.size(); i++) {
             string += expressions.get(i).toString() + (i < expressions.size() - 1 ? ", " : "");
         }

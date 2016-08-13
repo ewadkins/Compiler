@@ -11,18 +11,10 @@ import java.util.List;
 /**
  * Created by ericwadkins on 8/11/16.
  */
-public class BitwiseNot extends Operation {
-
-    protected final Expression expression;
+public class BitwiseNot extends UnaryOperation {
 
     public BitwiseNot(Expression expression, Block parent, Token token) {
-        super(parent, token);
-        this.expression = expression;
-    }
-
-    @Override
-    public List<Variable> getVariables() {
-        return new ArrayList<Variable>(expression.getVariables());
+        super(expression, parent, token);
     }
 
     @Override

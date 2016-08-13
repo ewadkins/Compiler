@@ -11,11 +11,11 @@ import java.util.List;
 /**
  * Created by ericwadkins on 8/11/16.
  */
-public class IncrementPrefix extends Operation {
+public abstract class UnaryOperation extends Operation {
 
     protected final Expression expression;
 
-    public IncrementPrefix(Expression expression, Block parent, Token token) {
+    public UnaryOperation(Expression expression, Block parent, Token token) {
         super(parent, token);
         this.expression = expression;
     }
@@ -23,11 +23,6 @@ public class IncrementPrefix extends Operation {
     @Override
     public List<Variable> getVariables() {
         return new ArrayList<Variable>(expression.getVariables());
-    }
-
-    @Override
-    public java.lang.String toString() {
-        return "++" + expression;
     }
 
 }

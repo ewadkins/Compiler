@@ -11,12 +11,12 @@ import java.util.List;
 /**
  * Created by ericwadkins on 8/11/16.
  */
-public class GreaterThanEqual extends Operation {
+public abstract class BinaryOperation extends Operation {
 
     protected final Expression expression1;
     protected final Expression expression2;
 
-    public GreaterThanEqual(Expression expression1, Expression expression2, Block parent, Token token) {
+    public BinaryOperation(Expression expression1, Expression expression2, Block parent, Token token) {
         super(parent, token);
         this.expression1 = expression1;
         this.expression2 = expression2;
@@ -27,11 +27,6 @@ public class GreaterThanEqual extends Operation {
         List<Variable> variables = new ArrayList<Variable>(expression1.getVariables());
         variables.addAll(expression2.getVariables());
         return variables;
-    }
-
-    @Override
-    public String toString() {
-        return "(" + expression1 + " >= " + expression2 + ")";
     }
 
 }

@@ -451,511 +451,451 @@ public class CompilerMainListener implements CompilerListener {
 
 	@Override public void enterExpression(CompilerParser.ExpressionContext ctx) { }
 
-	@Override public void exitExpression(CompilerParser.ExpressionContext ctx) { }
+	@Override public void exitExpression(CompilerParser.ExpressionContext ctx) {
+        if (ctx.postfix_call_subscript() != null) {
+            if (ctx.postfix_call_subscript().getText().equals("++")) {
+                if (debug) System.out.println("Exiting PostfixIncrement");
 
-    @Override public void enterNegate(CompilerParser.NegateContext ctx) { }
+                PostfixIncrement postfixIncrement =
+                        new PostfixIncrement((Expression) stack.pop(), blocks.peek(), ctx.getStart());
+                stack.push(postfixIncrement);
 
-    @Override public void exitNegate(CompilerParser.NegateContext ctx) {
-        if (debug) System.out.println("Exiting Negate");
-
-        Negate negate = new Negate((Expression) stack.pop(), blocks.peek(), ctx.getStart());
-        stack.push(negate);
-
-        if (debug) System.out.println("\t" + negate);
-    }
-
-    @Override public void enterNot(CompilerParser.NotContext ctx) { }
-
-    @Override public void exitNot(CompilerParser.NotContext ctx) {
-        if (debug) System.out.println("Exiting Not");
-
-        Not not = new Not((Expression) stack.pop(), blocks.peek(), ctx.getStart());
-        stack.push(not);
-
-        if (debug) System.out.println("\t" + not);
-    }
-
-    @Override public void enterBit_not(CompilerParser.Bit_notContext ctx) { }
-
-    @Override public void exitBit_not(CompilerParser.Bit_notContext ctx) {
-        if (debug) System.out.println("Exiting BitwiseNot");
-
-        BitwiseNot bitwiseNot = new BitwiseNot((Expression) stack.pop(), blocks.peek(), ctx.getStart());
-        stack.push(bitwiseNot);
-
-        if (debug) System.out.println("\t" + bitwiseNot);
-    }
-
-    @Override public void enterIncrement_postfix(CompilerParser.Increment_postfixContext ctx) { }
-
-    @Override public void exitIncrement_postfix(CompilerParser.Increment_postfixContext ctx) {
-        if (debug) System.out.println("Exiting IncrementPostfix");
-
-        IncrementPostfix incrementPostfix = new IncrementPostfix((Expression) stack.pop(), blocks.peek(), ctx.getStart());
-        stack.push(incrementPostfix);
-
-        if (debug) System.out.println("\t" + incrementPostfix);
-    }
-
-    @Override public void enterDecrement_postfix(CompilerParser.Decrement_postfixContext ctx) { }
-
-    @Override public void exitDecrement_postfix(CompilerParser.Decrement_postfixContext ctx) {
-        if (debug) System.out.println("Exiting DecrementPostfix");
-
-        DecrementPostfix decrementPostfix = new DecrementPostfix((Expression) stack.pop(), blocks.peek(), ctx.getStart());
-        stack.push(decrementPostfix);
-
-        if (debug) System.out.println("\t" + decrementPostfix);
-    }
-
-    @Override public void enterIncrement_prefix(CompilerParser.Increment_prefixContext ctx) { }
-
-    @Override public void exitIncrement_prefix(CompilerParser.Increment_prefixContext ctx) {
-        if (debug) System.out.println("Exiting IncrementPrefix");
-
-        IncrementPrefix incrementPrefix = new IncrementPrefix((Expression) stack.pop(), blocks.peek(), ctx.getStart());
-        stack.push(incrementPrefix);
-
-        if (debug) System.out.println("\t" + incrementPrefix);
-    }
-
-    @Override public void enterDecrement_prefix(CompilerParser.Decrement_prefixContext ctx) { }
-
-    @Override public void exitDecrement_prefix(CompilerParser.Decrement_prefixContext ctx) {
-        if (debug) System.out.println("Exiting DecrementPrefix");
-
-        DecrementPrefix decrementPrefix = new DecrementPrefix((Expression) stack.pop(), blocks.peek(), ctx.getStart());
-        stack.push(decrementPrefix);
-
-        if (debug) System.out.println("\t" + decrementPrefix);
-    }
-
-    @Override public void enterOperand(CompilerParser.OperandContext ctx) { }
-
-    @Override public void exitOperand(CompilerParser.OperandContext ctx) { }
-
-	@Override public void enterOperation(CompilerParser.OperationContext ctx) { }
-
-	@Override public void exitOperation(CompilerParser.OperationContext ctx) { }
-
-	@Override public void enterOr(CompilerParser.OrContext ctx) { }
-
-	@Override public void exitOr(CompilerParser.OrContext ctx) {
-        int expressionCount = ctx.weak_terms().size() + ctx.and().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting Or");
-
-            List<Expression> expressions = new ArrayList<>();
-            for (int i = 0; i < expressionCount; i++) {
-                expressions.add((Expression) stack.pop());
+                if (debug) System.out.println("\t" + postfixIncrement);
             }
-            Collections.reverse(expressions);
+            else if (ctx.postfix_call_subscript().getText().equals("--")) {
+                if (debug) System.out.println("Exiting PostfixDecrement");
 
-            Or or = new Or(expressions, blocks.peek(), ctx.getStart());
-            stack.push(or);
+                PostfixDecrement postfixDecrement =
+                        new PostfixDecrement((Expression) stack.pop(), blocks.peek(), ctx.getStart());
+                stack.push(postfixDecrement);
 
-            if (debug) System.out.println("\t" + or);
-        }
-    }
-
-	@Override public void enterAnd(CompilerParser.AndContext ctx) { }
-
-	@Override public void exitAnd(CompilerParser.AndContext ctx) {
-        int expressionCount = ctx.weak_terms().size() + ctx.less_than().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting And");
-
-            List<Expression> expressions = new ArrayList<>();
-            for (int i = 0; i < expressionCount; i++) {
-                expressions.add((Expression) stack.pop());
+                if (debug) System.out.println("\t" + postfixDecrement);
             }
-            Collections.reverse(expressions);
+            else if (ctx.postfix_call_subscript().getText().startsWith("(")) {
+                if (debug) System.out.println("Exiting Call");
 
-            And and = new And(expressions, blocks.peek(), ctx.getStart());
-            stack.push(and);
+                int expressionCount = ctx.expression().size();
+                List<Expression> expressions = new ArrayList<>();
+                for (int i = 0; i < expressionCount; i++) {
+                    expressions.add((Expression) stack.pop());
+                }
+                Collections.reverse(expressions);
+                Expression expression = (Expression) stack.pop();
 
-            if (debug) System.out.println("\t" + and);
-        }
-    }
+                Call call = new Call(expression, expressions, blocks.peek(), ctx.getStart());
+                stack.push(call);
 
-	@Override public void enterLess_than(CompilerParser.Less_thanContext ctx) { }
-
-	@Override public void exitLess_than(CompilerParser.Less_thanContext ctx) {
-        int expressionCount = ctx.weak_terms().size() + ctx.greater_than().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting LessThan");
-
-            List<Expression> expressions = new ArrayList<>();
-            expressions.add((Expression) stack.pop());
-            expressions.add((Expression) stack.pop());
-            Collections.reverse(expressions);
-
-            LessThan lessThan = new LessThan(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
-            stack.push(lessThan);
-
-            if (debug) System.out.println("\t" + lessThan);
-        }
-    }
-
-	@Override public void enterGreater_than(CompilerParser.Greater_thanContext ctx) { }
-
-	@Override public void exitGreater_than(CompilerParser.Greater_thanContext ctx) {
-        int expressionCount = ctx.weak_terms().size() + ctx.less_than_equal().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting GreaterThan");
-
-            List<Expression> expressions = new ArrayList<>();
-            expressions.add((Expression) stack.pop());
-            expressions.add((Expression) stack.pop());
-            Collections.reverse(expressions);
-
-            GreaterThan greaterThan = new GreaterThan(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
-            stack.push(greaterThan);
-
-            if (debug) System.out.println("\t" + greaterThan);
-        }
-    }
-
-	@Override public void enterLess_than_equal(CompilerParser.Less_than_equalContext ctx) { }
-
-	@Override public void exitLess_than_equal(CompilerParser.Less_than_equalContext ctx) {
-        int expressionCount = ctx.weak_terms().size() + ctx.greater_than_equal().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting LessThanEqual");
-
-            List<Expression> expressions = new ArrayList<>();
-            expressions.add((Expression) stack.pop());
-            expressions.add((Expression) stack.pop());
-            Collections.reverse(expressions);
-
-            LessThanEqual lessThanEqual = new LessThanEqual(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
-            stack.push(lessThanEqual);
-
-            if (debug) System.out.println("\t" + lessThanEqual);
-        }
-    }
-
-	@Override public void enterGreater_than_equal(CompilerParser.Greater_than_equalContext ctx) { }
-
-	@Override public void exitGreater_than_equal(CompilerParser.Greater_than_equalContext ctx) {
-        int expressionCount = ctx.weak_terms().size() + ctx.not_equal().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting GreaterThanEqual");
-
-            List<Expression> expressions = new ArrayList<>();
-            expressions.add((Expression) stack.pop());
-            expressions.add((Expression) stack.pop());
-            Collections.reverse(expressions);
-
-            GreaterThanEqual greaterThanEqual = new GreaterThanEqual(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
-            stack.push(greaterThanEqual);
-
-            if (debug) System.out.println("\t" + greaterThanEqual);
-        }
-    }
-
-    @Override public void enterNot_equal(CompilerParser.Not_equalContext ctx) { }
-
-    @Override public void exitNot_equal(CompilerParser.Not_equalContext ctx) {
-        int expressionCount = ctx.weak_terms().size() + ctx.equal().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting NotEqual");
-
-            List<Expression> expressions = new ArrayList<>();
-            expressions.add((Expression) stack.pop());
-            expressions.add((Expression) stack.pop());
-            Collections.reverse(expressions);
-
-            NotEqual notEqual = new NotEqual(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
-            stack.push(notEqual);
-
-            if (debug) System.out.println("\t" + notEqual);
-        }
-    }
-
-    @Override public void enterEqual(CompilerParser.EqualContext ctx) { }
-
-    @Override public void exitEqual(CompilerParser.EqualContext ctx) {
-        int expressionCount = ctx.weak_terms().size() + ctx.bit_right().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting Equal");
-
-            List<Expression> expressions = new ArrayList<>();
-            expressions.add((Expression) stack.pop());
-            expressions.add((Expression) stack.pop());
-            Collections.reverse(expressions);
-
-            Equal equal = new Equal(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
-            stack.push(equal);
-
-            if (debug) System.out.println("\t" + equal);
-        }
-    }
-
-    @Override public void enterBit_right(CompilerParser.Bit_rightContext ctx) { }
-
-    @Override public void exitBit_right(CompilerParser.Bit_rightContext ctx) {
-        int expressionCount = ctx.weak_terms().size() + ctx.bit_left().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting BitwiseRight");
-
-            List<Expression> expressions = new ArrayList<>();
-            expressions.add((Expression) stack.pop());
-            expressions.add((Expression) stack.pop());
-            Collections.reverse(expressions);
-
-            BitwiseRight bitwiseRight = new BitwiseRight(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
-            stack.push(bitwiseRight);
-
-            if (debug) System.out.println("\t" + bitwiseRight);
-        }
-    }
-
-    @Override public void enterBit_left(CompilerParser.Bit_leftContext ctx) { }
-
-    @Override public void exitBit_left(CompilerParser.Bit_leftContext ctx) {
-        int expressionCount = ctx.weak_terms().size() + ctx.difference().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting BitwiseLeft");
-
-            List<Expression> expressions = new ArrayList<>();
-            expressions.add((Expression) stack.pop());
-            expressions.add((Expression) stack.pop());
-            Collections.reverse(expressions);
-
-            BitwiseLeft bitwiseLeft = new BitwiseLeft(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
-            stack.push(bitwiseLeft);
-
-            if (debug) System.out.println("\t" + bitwiseLeft);
-        }
-    }
-
-    @Override public void enterDifference(CompilerParser.DifferenceContext ctx) { }
-
-	@Override public void exitDifference(CompilerParser.DifferenceContext ctx) {
-        int expressionCount = ctx.weak_terms().size() + ctx.sum().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting Difference");
-
-            List<Expression> expressions = new ArrayList<>();
-            for (int i = 0; i < expressionCount; i++) {
-                expressions.add((Expression) stack.pop());
+                if (debug) System.out.println("\t" + call);
             }
-            Collections.reverse(expressions);
+            else if (ctx.postfix_call_subscript().getText().startsWith("[")) {
+                if (debug) System.out.println("Exiting Subscript");
 
-            Difference difference = new Difference(expressions, blocks.peek(), ctx.getStart());
-            stack.push(difference);
-
-            if (debug) System.out.println("\t" + difference);
-        }
-    }
-
-	@Override public void enterSum(CompilerParser.SumContext ctx) { }
-
-	@Override public void exitSum(CompilerParser.SumContext ctx) {
-        int expressionCount = ctx.weak_terms().size() + ctx.modulus().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting Sum");
-
-            List<Expression> expressions = new ArrayList<>();
-            for (int i = 0; i < expressionCount; i++) {
+                List<Expression> expressions = new ArrayList<>();
                 expressions.add((Expression) stack.pop());
-            }
-            Collections.reverse(expressions);
-
-            Sum sum = new Sum(expressions, blocks.peek(), ctx.getStart());
-            stack.push(sum);
-
-            if (debug) System.out.println("\t" + sum);
-        }
-    }
-
-    @Override public void enterModulus(CompilerParser.ModulusContext ctx) { }
-
-    @Override public void exitModulus(CompilerParser.ModulusContext ctx) {
-        int expressionCount = ctx.strong_terms().size() + ctx.quotient().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting Modulus");
-
-            List<Expression> expressions = new ArrayList<>();
-            expressions.add((Expression) stack.pop());
-            expressions.add((Expression) stack.pop());
-            Collections.reverse(expressions);
-
-            Modulus modulus = new Modulus(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
-            stack.push(modulus);
-
-            if (debug) System.out.println("\t" + modulus);
-        }
-    }
-
-    @Override public void enterQuotient(CompilerParser.QuotientContext ctx) { }
-
-	@Override public void exitQuotient(CompilerParser.QuotientContext ctx) {
-        int expressionCount = ctx.strong_terms().size() + ctx.product().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting Quotient");
-
-            List<Expression> expressions = new ArrayList<>();
-            for (int i = 0; i < expressionCount; i++) {
                 expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                Subscript subscript = new Subscript(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(subscript);
+
+                if (debug) System.out.println("\t" + subscript);
             }
-            Collections.reverse(expressions);
-
-            Quotient quotient = new Quotient(expressions, blocks.peek(), ctx.getStart());
-            stack.push(quotient);
-
-            if (debug) System.out.println("\t" + quotient);
         }
-    }
+        else if (ctx.prefix_unary() != null) {
+            if (ctx.prefix_unary().getText().equals("++")) {
+                if (debug) System.out.println("Exiting PrefixIncrement");
 
-	@Override public void enterProduct(CompilerParser.ProductContext ctx) { }
+                PrefixIncrement prefixIncrement =
+                        new PrefixIncrement((Expression) stack.pop(), blocks.peek(), ctx.getStart());
+                stack.push(prefixIncrement);
 
-	@Override public void exitProduct(CompilerParser.ProductContext ctx) {
-        int expressionCount = ctx.strong_terms().size() + ctx.power().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting Product");
+                if (debug) System.out.println("\t" + prefixIncrement);
+            }
+            else if (ctx.prefix_unary().getText().equals("--")) {
+                if (debug) System.out.println("Exiting PrefixDecrement");
 
-            List<Expression> expressions = new ArrayList<>();
-            for (int i = 0; i < expressionCount; i++) {
+                PrefixDecrement prefixDecrement =
+                        new PrefixDecrement((Expression) stack.pop(), blocks.peek(), ctx.getStart());
+                stack.push(prefixDecrement);
+
+                if (debug) System.out.println("\t" + prefixDecrement);
+            }
+            else if (ctx.prefix_unary().getText().equals("+")) {
+                if (debug) System.out.println("Exiting Plus");
+
+                Plus plus = new Plus((Expression) stack.pop(), blocks.peek(), ctx.getStart());
+                stack.push(plus);
+
+                if (debug) System.out.println("\t" + plus);
+            }
+            else if (ctx.prefix_unary().getText().equals("-")) {
+                if (debug) System.out.println("Exiting Minus");
+
+                Minus minus = new Minus((Expression) stack.pop(), blocks.peek(), ctx.getStart());
+                stack.push(minus);
+
+                if (debug) System.out.println("\t" + minus);
+            }
+            else if (ctx.prefix_unary().getText().equals("!")) {
+                if (debug) System.out.println("Exiting Not");
+
+                Not not = new Not((Expression) stack.pop(), blocks.peek(), ctx.getStart());
+                stack.push(not);
+
+                if (debug) System.out.println("\t" + not);
+            }
+            else if (ctx.prefix_unary().getText().equals("~")) {
+                if (debug) System.out.println("Exiting BitwiseNot");
+
+                BitwiseNot bitwiseNot = new BitwiseNot((Expression) stack.pop(), blocks.peek(), ctx.getStart());
+                stack.push(bitwiseNot);
+
+                if (debug) System.out.println("\t" + bitwiseNot);
+            }
+        }
+        else if (ctx.pow_root() != null) {
+            if (ctx.pow_root().getText().equals("**")) {
+                if (debug) System.out.println("Exiting Power");
+
+                List<Expression> expressions = new ArrayList<>();
                 expressions.add((Expression) stack.pop());
-            }
-            Collections.reverse(expressions);
-
-            Product product = new Product(expressions, blocks.peek(), ctx.getStart());
-            stack.push(product);
-
-            if (debug) System.out.println("\t" + product);
-        }
-    }
-
-	@Override public void enterPower(CompilerParser.PowerContext ctx) { }
-
-	@Override public void exitPower(CompilerParser.PowerContext ctx) {
-        int expressionCount = ctx.strong_terms().size() + ctx.subscript().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting Power");
-
-            List<Expression> expressions = new ArrayList<>();
-            expressions.add((Expression) stack.pop());
-            expressions.add((Expression) stack.pop());
-            Collections.reverse(expressions);
-
-            Power power = new Power(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
-            stack.push(power);
-
-            if (debug) System.out.println("\t" + power);
-        }
-    }
-
-	@Override public void enterSubscript(CompilerParser.SubscriptContext ctx) { }
-
-	@Override public void exitSubscript(CompilerParser.SubscriptContext ctx) {
-        int expressionCount = ctx.strong_terms().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting Subscript");
-
-            List<Expression> expressions = new ArrayList<>();
-            expressions.add((Expression) stack.pop());
-            expressions.add((Expression) stack.pop());
-            Collections.reverse(expressions);
-
-            Subscript subscript = new Subscript(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
-            stack.push(subscript);
-
-            if (debug) System.out.println("\t" + subscript);
-        }
-    }
-
-    @Override public void enterCall(CompilerParser.CallContext ctx) { }
-
-    @Override public void exitCall(CompilerParser.CallContext ctx) {
-        int expressionCount = ctx.weak_terms().size() + ctx.bit_or().size() - 1;
-        if (expressionCount > 0 || ctx.getText().endsWith("()")) {
-            if (debug) System.out.println("Exiting Call");
-
-            List<Expression> expressions = new ArrayList<>();
-            for (int i = 0; i < expressionCount; i++) {
                 expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                Power power = new Power(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(power);
+
+                if (debug) System.out.println("\t" + power);
             }
-            Collections.reverse(expressions);
-            Variable variable = (Variable) stack.pop();
+            else if (ctx.pow_root().getText().equals("//")) {
+                if (debug) System.out.println("Exiting Root");
 
-            Call call = new Call(variable, expressions, blocks.peek(), ctx.getStart());
-            stack.push(call);
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
 
-            if (debug) System.out.println("\t" + call);
+                Root root = new Root(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(root);
+
+                if (debug) System.out.println("\t" + root);
+            }
+        }
+        else if (ctx.mult_div_mod() != null) {
+            if (ctx.mult_div_mod().getText().equals("*")) {
+                if (debug) System.out.println("Exiting Product");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                Product product = new Product(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(product);
+
+                if (debug) System.out.println("\t" + product);
+            }
+            else if (ctx.mult_div_mod().getText().equals("/")) {
+                if (debug) System.out.println("Exiting Quotient");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                Quotient quotient = new Quotient(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(quotient);
+
+                if (debug) System.out.println("\t" + quotient);
+            }
+            else if (ctx.mult_div_mod().getText().equals("%")) {
+                if (debug) System.out.println("Exiting Remainder");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                Remainder remainder = new Remainder(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(remainder);
+
+                if (debug) System.out.println("\t" + remainder);
+            }
+        }
+        else if (ctx.add_sub() != null) {
+            if (ctx.add_sub().getText().equals("+")) {
+                if (debug) System.out.println("Exiting Sum");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                Sum sum = new Sum(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(sum);
+
+                if (debug) System.out.println("\t" + sum);
+            }
+            else if (ctx.add_sub().getText().equals("-")) {
+                if (debug) System.out.println("Exiting Difference");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                Difference difference =
+                        new Difference(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(difference);
+
+                if (debug) System.out.println("\t" + difference);
+            }
+        }
+        else if (ctx.bitleft_right() != null) {
+            if (ctx.bitleft_right().getText().equals("<<")) {
+                if (debug) System.out.println("Exiting BitwiseLeft");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                BitwiseLeft bitwiseLeft =
+                        new BitwiseLeft(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(bitwiseLeft);
+
+                if (debug) System.out.println("\t" + bitwiseLeft);
+            }
+            else if (ctx.bitleft_right().getText().equals(">>")) {
+                if (debug) System.out.println("Exiting BitwiseRight");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                BitwiseRight bitwiseRight =
+                        new BitwiseRight(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(bitwiseRight);
+
+                if (debug) System.out.println("\t" + bitwiseRight);
+            }
+        }
+        else if (ctx.less_greater() != null) {
+            if (ctx.less_greater().getText().equals("<")) {
+                if (debug) System.out.println("Exiting LessThan");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                LessThan lessThan = new LessThan(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(lessThan);
+
+                if (debug) System.out.println("\t" + lessThan);
+            }
+            else if (ctx.less_greater().getText().equals("<=")) {
+                if (debug) System.out.println("Exiting LessThanOrEqual");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                LessThanOrEqual lessThanOrEqual =
+                        new LessThanOrEqual(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(lessThanOrEqual);
+
+                if (debug) System.out.println("\t" + lessThanOrEqual);
+            }
+            else if (ctx.less_greater().getText().equals(">")) {
+                if (debug) System.out.println("Exiting GreaterThan");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                GreaterThan greaterThan =
+                        new GreaterThan(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(greaterThan);
+
+                if (debug) System.out.println("\t" + greaterThan);
+            }
+            else if (ctx.less_greater().getText().equals(">=")) {
+                if (debug) System.out.println("Exiting GreaterThanOrEqual");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                GreaterThanOrEqual greaterThanOrEqual =
+                        new GreaterThanOrEqual(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(greaterThanOrEqual);
+
+                if (debug) System.out.println("\t" + greaterThanOrEqual);
+            }
+        }
+        else if (ctx.equal_notequal() != null) {
+            if (ctx.equal_notequal().getText().equals("==")) {
+                if (debug) System.out.println("Exiting Equal");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                Equal equal = new Equal(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(equal);
+
+                if (debug) System.out.println("\t" + equal);
+            }
+            else if (ctx.equal_notequal().getText().equals("!=")) {
+                if (debug) System.out.println("Exiting NotEqual");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                NotEqual notEqual = new NotEqual(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(notEqual);
+
+                if (debug) System.out.println("\t" + notEqual);
+            }
+        }
+        else if (ctx.bitand() != null) {
+            if (ctx.bitand().getText().equals("&")) {
+                if (debug) System.out.println("Exiting BitwiseAnd");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                BitwiseAnd bitwiseAnd =
+                        new BitwiseAnd(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(bitwiseAnd);
+
+                if (debug) System.out.println("\t" + bitwiseAnd);
+            }
+        }
+        else if (ctx.bitxor() != null) {
+            if (ctx.bitxor().getText().equals("^")) {
+                if (debug) System.out.println("Exiting BitwiseXor");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                BitwiseXor bitwiseXor =
+                        new BitwiseXor(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(bitwiseXor);
+
+                if (debug) System.out.println("\t" + bitwiseXor);
+            }
+        }
+        else if (ctx.bitor() != null) {
+            if (ctx.bitor().getText().equals("|")) {
+                if (debug) System.out.println("Exiting BitwiseOr");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                BitwiseOr bitwiseOr = new BitwiseOr(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(bitwiseOr);
+
+                if (debug) System.out.println("\t" + bitwiseOr);
+            }
+        }
+        else if (ctx.and() != null) {
+            if (ctx.and().getText().equals("&&")) {
+                if (debug) System.out.println("Exiting And");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                And and = new And(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(and);
+
+                if (debug) System.out.println("\t" + and);
+            }
+        }
+        else if (ctx.or() != null) {
+            if (ctx.or().getText().equals("||")) {
+                if (debug) System.out.println("Exiting Or");
+
+                List<Expression> expressions = new ArrayList<>();
+                expressions.add((Expression) stack.pop());
+                expressions.add((Expression) stack.pop());
+                Collections.reverse(expressions);
+
+                Or or = new Or(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
+                stack.push(or);
+
+                if (debug) System.out.println("\t" + or);
+            }
         }
     }
 
-    @Override public void enterBit_or(CompilerParser.Bit_orContext ctx) { }
+    @Override public void enterPostfix_call_subscript(CompilerParser.Postfix_call_subscriptContext ctx) { }
 
-    @Override public void exitBit_or(CompilerParser.Bit_orContext ctx) {
-        int expressionCount = ctx.weak_terms().size() + ctx.bit_xor().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting BitwiseOr");
+    @Override public void exitPostfix_call_subscript(CompilerParser.Postfix_call_subscriptContext ctx) { }
 
-            List<Expression> expressions = new ArrayList<>();
-            expressions.add((Expression) stack.pop());
-            expressions.add((Expression) stack.pop());
-            Collections.reverse(expressions);
+    @Override public void enterPrefix_unary(CompilerParser.Prefix_unaryContext ctx) { }
 
-            BitwiseOr bitwiseOr = new BitwiseOr(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
-            stack.push(bitwiseOr);
+    @Override public void exitPrefix_unary(CompilerParser.Prefix_unaryContext ctx) { }
 
-            if (debug) System.out.println("\t" + bitwiseOr);
-        }
-    }
+    @Override public void enterPow_root(CompilerParser.Pow_rootContext ctx) { }
 
-    @Override public void enterBit_xor(CompilerParser.Bit_xorContext ctx) { }
+    @Override public void exitPow_root(CompilerParser.Pow_rootContext ctx) { }
 
-    @Override public void exitBit_xor(CompilerParser.Bit_xorContext ctx) {
-        int expressionCount = ctx.weak_terms().size() + ctx.bit_and().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting BitwiseXor");
+    @Override public void enterMult_div_mod(CompilerParser.Mult_div_modContext ctx) { }
 
-            List<Expression> expressions = new ArrayList<>();
-            expressions.add((Expression) stack.pop());
-            expressions.add((Expression) stack.pop());
-            Collections.reverse(expressions);
+    @Override public void exitMult_div_mod(CompilerParser.Mult_div_modContext ctx) { }
 
-            BitwiseXor bitwiseXor = new BitwiseXor(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
-            stack.push(bitwiseXor);
+    @Override public void enterAdd_sub(CompilerParser.Add_subContext ctx) { }
 
-            if (debug) System.out.println("\t" + bitwiseXor);
-        }
-    }
+    @Override public void exitAdd_sub(CompilerParser.Add_subContext ctx) { }
 
-    @Override public void enterBit_and(CompilerParser.Bit_andContext ctx) { }
+    @Override public void enterBitleft_right(CompilerParser.Bitleft_rightContext ctx) { }
 
-    @Override public void exitBit_and(CompilerParser.Bit_andContext ctx) {
-        int expressionCount = ctx.weak_terms().size() + ctx.or().size();
-        if (expressionCount > 1) {
-            if (debug) System.out.println("Exiting BitwiseAnd");
+    @Override public void exitBitleft_right(CompilerParser.Bitleft_rightContext ctx) { }
 
-            List<Expression> expressions = new ArrayList<>();
-            expressions.add((Expression) stack.pop());
-            expressions.add((Expression) stack.pop());
-            Collections.reverse(expressions);
+    @Override public void enterLess_greater(CompilerParser.Less_greaterContext ctx) { }
 
-            BitwiseAnd bitwiseAnd = new BitwiseAnd(expressions.get(0), expressions.get(1), blocks.peek(), ctx.getStart());
-            stack.push(bitwiseAnd);
+    @Override public void exitLess_greater(CompilerParser.Less_greaterContext ctx) { }
 
-            if (debug) System.out.println("\t" + bitwiseAnd);
-        }
-    }
+    @Override public void enterEqual_notequal(CompilerParser.Equal_notequalContext ctx) { }
 
-    @Override public void enterWeak_terms(CompilerParser.Weak_termsContext ctx) { }
+    @Override public void exitEqual_notequal(CompilerParser.Equal_notequalContext ctx) { }
 
-    @Override public void exitWeak_terms(CompilerParser.Weak_termsContext ctx) { System.out.println("EXIT WEAK TERMS");}
+    @Override public void enterBitand(CompilerParser.BitandContext ctx) { }
 
-    @Override public void enterStrong_terms(CompilerParser.Strong_termsContext ctx) { }
+    @Override public void exitBitand(CompilerParser.BitandContext ctx) { }
 
-    @Override public void exitStrong_terms(CompilerParser.Strong_termsContext ctx) { System.out.println("EXIT STRONG TERMS");}
+    @Override public void enterBitxor(CompilerParser.BitxorContext ctx) { }
 
-    @Override public void enterUnary_operation(CompilerParser.Unary_operationContext ctx) { }
+    @Override public void exitBitxor(CompilerParser.BitxorContext ctx) { }
 
-    @Override public void exitUnary_operation(CompilerParser.Unary_operationContext ctx) { System.out.println("EXIT UNARY OPERATION");}
+    @Override public void enterBitor(CompilerParser.BitorContext ctx) { }
+
+    @Override public void exitBitor(CompilerParser.BitorContext ctx) { }
+
+    @Override public void enterAnd(CompilerParser.AndContext ctx) { }
+
+    @Override public void exitAnd(CompilerParser.AndContext ctx) { }
+
+    @Override public void enterOr(CompilerParser.OrContext ctx) { }
+
+    @Override public void exitOr(CompilerParser.OrContext ctx) { }
 
     @Override public void enterType(CompilerParser.TypeContext ctx) { }
 
@@ -1038,8 +978,8 @@ public class CompilerMainListener implements CompilerListener {
 	@Override public void enterEveryRule(ParserRuleContext ctx) { }
 
 	@Override public void exitEveryRule(ParserRuleContext ctx) {
-        //if (debug) System.out.println("\t" + stack);
-        //if (debug) System.out.println("\t" + ctx.start);
+        //if (debug) System.out.println(stack);
+        //if (debug) System.out.println(ctx.start);
     }
 
 	@Override public void visitTerminal(TerminalNode node) { }

@@ -11,18 +11,10 @@ import java.util.List;
 /**
  * Created by ericwadkins on 8/11/16.
  */
-public class DecrementPrefix extends Operation {
+public class PrefixDecrement extends UnaryOperation {
 
-    protected final Expression expression;
-
-    public DecrementPrefix(Expression expression, Block parent, Token token) {
-        super(parent, token);
-        this.expression = expression;
-    }
-
-    @Override
-    public List<Variable> getVariables() {
-        return new ArrayList<Variable>(expression.getVariables());
+    public PrefixDecrement(Expression expression, Block parent, Token token) {
+        super(expression, parent, token);
     }
 
     @Override

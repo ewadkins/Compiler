@@ -11,23 +11,15 @@ import java.util.List;
 /**
  * Created by ericwadkins on 8/11/16.
  */
-public class IncrementPostfix extends Operation {
+public class PrefixIncrement extends UnaryOperation {
 
-    protected final Expression expression;
-
-    public IncrementPostfix(Expression expression, Block parent, Token token) {
-        super(parent, token);
-        this.expression = expression;
-    }
-
-    @Override
-    public List<Variable> getVariables() {
-        return new ArrayList<Variable>(expression.getVariables());
+    public PrefixIncrement(Expression expression, Block parent, Token token) {
+        super(expression, parent, token);
     }
 
     @Override
     public java.lang.String toString() {
-        return expression + "++";
+        return "++" + expression;
     }
 
 }

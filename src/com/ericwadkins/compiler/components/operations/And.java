@@ -11,32 +11,15 @@ import java.util.List;
 /**
  * Created by ericwadkins on 8/11/16.
  */
-public class And extends Operation {
+public class And extends BinaryOperation {
 
-    protected final List<Expression> expressions;
-
-    public And(List<Expression> expressions, Block parent, Token token) {
-        super(parent, token);
-        this.expressions = expressions;
-    }
-
-    @Override
-    public List<Variable> getVariables() {
-        List<Variable> variables = new ArrayList<Variable>();
-        for (int i = 0; i < expressions.size(); i++) {
-            variables.addAll(expressions.get(i).getVariables());
-        }
-        return variables;
+    public And(Expression expression1, Expression expression2, Block parent, Token token) {
+        super(expression1, expression2, parent, token);
     }
 
     @Override
     public String toString() {
-        String string = "(";
-        for (int i = 0; i < expressions.size(); i++) {
-            string += expressions.get(i).toString() + (i < expressions.size() - 1 ? " && " : "");
-        }
-        string += ")";
-        return string;
+        return "(" + expression1 + " + " + expression2 + ")";
     }
 
 }

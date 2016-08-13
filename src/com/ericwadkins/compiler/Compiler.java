@@ -2,14 +2,12 @@ package com.ericwadkins.compiler;
 
 import com.ericwadkins.compiler.components.elements.Block;
 import com.ericwadkins.compiler.components.elements.Element;
+import com.ericwadkins.parser.*;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.gui.TreeViewer;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
-
-import com.ericwadkins.parser.CompilerLexer;
-import com.ericwadkins.parser.CompilerListener;
-import com.ericwadkins.parser.CompilerParser;
+import org.antlr.v4.runtime.tree.Trees;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -23,12 +21,12 @@ import java.util.List;
  */
 public class Compiler {
 
-    private static final boolean showTree = false;
+    private static final boolean showTree = true;
 
     public static void main(String[] args) {
 
         try {
-            String input = new String(Files.readAllBytes(Paths.get("test.txt")))
+            String input = new String(Files.readAllBytes(Paths.get("test3.txt")))
                     .replaceAll("\\/\\*[\\s\\S]*\\*\\/", "").replaceAll("\\/\\/.*", ""); // Removes comments
             System.out.println(input);
             System.out.println("==================================\n");
@@ -42,7 +40,6 @@ public class Compiler {
 
             try {
                 ParseTree tree = parser.root();
-                //Trees.inspect(tree, parser);
                 ParseTreeWalker walker = new ParseTreeWalker();
                 CompilerListener listener = new CompilerMainListener(true);
 

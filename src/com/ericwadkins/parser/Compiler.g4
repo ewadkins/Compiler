@@ -74,44 +74,36 @@ function: type variable ('(' ((type variable ',')* type variable)? ')') element;
 return_statement: RETURN expression;
 RETURN: 'return';
 
-expression: ('(' expression ')' | operand | operation);
-operand: number | string | character | array | variable;
+expression
+    : '(' expression ')'
+    | number | string | character | array | variable
+    | expression postfix_call_subscript
+    | prefix_unary expression
+    | expression pow_root expression
+    | expression mult_div_mod expression
+    | expression add_sub expression
+    | expression bitleft_right expression
+    | expression less_greater expression
+    | expression equal_notequal expression
+    | expression bitand expression
+    | expression bitxor expression
+    | expression bitor expression
+    | expression and expression
+    | expression or expression;
 
-// Operations
-operation: call;
-call: (weak_terms | bit_or) ('(' (((weak_terms | bit_or) ',')* (weak_terms | bit_or))? ')')?;
-bit_or: (weak_terms | bit_xor) ('|' (weak_terms | bit_xor))?;
-bit_xor: (weak_terms | bit_and) ('^' (weak_terms | bit_and))?;
-bit_and: (weak_terms | or) ('&' (weak_terms | or))?;
-or: (weak_terms | and) ('||' (weak_terms | and))*;
-and: (weak_terms | less_than) ('&&' (weak_terms | less_than))*;
-less_than: (weak_terms | greater_than) ('<' (weak_terms | greater_than))?;
-greater_than: (weak_terms | less_than_equal) ('>' (weak_terms | less_than_equal))?;
-less_than_equal: (weak_terms | greater_than_equal) ('<=' (weak_terms | greater_than_equal))?;
-greater_than_equal: (weak_terms | not_equal) ('>=' (weak_terms | not_equal))?;
-not_equal: (weak_terms | equal) ('!=' (weak_terms | equal))?;
-equal: (weak_terms | bit_right) ('==' (weak_terms | bit_right))?;
-bit_right: (weak_terms | bit_left) ('>>' (weak_terms | bit_left))?;
-bit_left: (weak_terms | difference) ('<<' (weak_terms | difference))?;
-difference: (weak_terms | sum) ('-' (weak_terms | sum))*;
-sum: (weak_terms | modulus) ('+' (weak_terms | modulus))*;
-modulus: (strong_terms | quotient) ('%' (strong_terms | quotient))?;
-quotient: (strong_terms | product) ('/' (strong_terms | product))*;
-product: (strong_terms | power) ('*' (strong_terms | power))*;
-power: (strong_terms | subscript) ('**' (strong_terms | subscript))?;
-subscript: (strong_terms) ('[' (strong_terms) ']')?;
-
-strong_terms: unary_operation | weak_terms;
-weak_terms: '(' expression ')' | operand;
-
-unary_operation: increment_postfix | decrement_postfix | increment_prefix | decrement_prefix | negate | not | bit_not;
-increment_postfix: weak_terms '++';
-decrement_postfix: weak_terms '--';
-increment_prefix: '++' weak_terms;
-decrement_prefix: '--' weak_terms;
-negate: '-' weak_terms;
-not: '!' weak_terms;
-bit_not: '~' weak_terms;
+postfix_call_subscript: '++' | '--' | '(' ((expression ',')* expression)? ')' | '[' expression ']';
+prefix_unary: '++' | '--' | '+' | '-' | '!' | '~';
+pow_root: '**' | '//';
+mult_div_mod: '*' | '/' | '%';
+add_sub: '+' | '-';
+bitleft_right: '<<' | '>>';
+less_greater: '<' | '<=' | '>' | '>=';
+equal_notequal: '==' | '!=';
+bitand: '&';
+bitxor: '^';
+bitor: '|';
+and: '&&';
+or: '||';
 
 type: TYPE '[]'?;
 variable: VARIABLE;

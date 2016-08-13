@@ -11,15 +11,15 @@ import java.util.List;
 /**
  * Created by ericwadkins on 8/11/16.
  */
-public class Quotient extends BinaryOperation {
+public class PostfixDecrement extends UnaryOperation {
 
-    public Quotient(Expression expression1, Expression expression2, Block parent, Token token) {
-        super(expression1, expression2, parent, token);
+    public PostfixDecrement(Expression expression, Block parent, Token token) {
+        super(expression, parent, token);
     }
 
     @Override
     public java.lang.String toString() {
-        return "(" + expression1 + " / " + expression2 + ")";
+        return expression + "--";
     }
 
 }

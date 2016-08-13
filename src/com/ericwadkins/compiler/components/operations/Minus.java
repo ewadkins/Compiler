@@ -11,23 +11,15 @@ import java.util.List;
 /**
  * Created by ericwadkins on 8/11/16.
  */
-public class DecrementPostfix extends Operation {
+public class Minus extends UnaryOperation {
 
-    protected final Expression expression;
-
-    public DecrementPostfix(Expression expression, Block parent, Token token) {
-        super(parent, token);
-        this.expression = expression;
-    }
-
-    @Override
-    public List<Variable> getVariables() {
-        return new ArrayList<Variable>(expression.getVariables());
+    public Minus(Expression expression, Block parent, Token token) {
+        super(expression, parent, token);
     }
 
     @Override
     public java.lang.String toString() {
-        return expression + "--";
+        return "-" + expression;
     }
 
 }

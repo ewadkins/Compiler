@@ -310,75 +310,115 @@ public interface CompilerListener extends ParseTreeListener {
 	 */
 	void exitExpression(CompilerParser.ExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CompilerParser#operand}.
+	 * Enter a parse tree produced by {@link CompilerParser#postfix_call_subscript}.
 	 * @param ctx the parse tree
 	 */
-	void enterOperand(CompilerParser.OperandContext ctx);
+	void enterPostfix_call_subscript(CompilerParser.Postfix_call_subscriptContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CompilerParser#operand}.
+	 * Exit a parse tree produced by {@link CompilerParser#postfix_call_subscript}.
 	 * @param ctx the parse tree
 	 */
-	void exitOperand(CompilerParser.OperandContext ctx);
+	void exitPostfix_call_subscript(CompilerParser.Postfix_call_subscriptContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CompilerParser#operation}.
+	 * Enter a parse tree produced by {@link CompilerParser#prefix_unary}.
 	 * @param ctx the parse tree
 	 */
-	void enterOperation(CompilerParser.OperationContext ctx);
+	void enterPrefix_unary(CompilerParser.Prefix_unaryContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CompilerParser#operation}.
+	 * Exit a parse tree produced by {@link CompilerParser#prefix_unary}.
 	 * @param ctx the parse tree
 	 */
-	void exitOperation(CompilerParser.OperationContext ctx);
+	void exitPrefix_unary(CompilerParser.Prefix_unaryContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CompilerParser#call}.
+	 * Enter a parse tree produced by {@link CompilerParser#pow_root}.
 	 * @param ctx the parse tree
 	 */
-	void enterCall(CompilerParser.CallContext ctx);
+	void enterPow_root(CompilerParser.Pow_rootContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CompilerParser#call}.
+	 * Exit a parse tree produced by {@link CompilerParser#pow_root}.
 	 * @param ctx the parse tree
 	 */
-	void exitCall(CompilerParser.CallContext ctx);
+	void exitPow_root(CompilerParser.Pow_rootContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CompilerParser#bit_or}.
+	 * Enter a parse tree produced by {@link CompilerParser#mult_div_mod}.
 	 * @param ctx the parse tree
 	 */
-	void enterBit_or(CompilerParser.Bit_orContext ctx);
+	void enterMult_div_mod(CompilerParser.Mult_div_modContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CompilerParser#bit_or}.
+	 * Exit a parse tree produced by {@link CompilerParser#mult_div_mod}.
 	 * @param ctx the parse tree
 	 */
-	void exitBit_or(CompilerParser.Bit_orContext ctx);
+	void exitMult_div_mod(CompilerParser.Mult_div_modContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CompilerParser#bit_xor}.
+	 * Enter a parse tree produced by {@link CompilerParser#add_sub}.
 	 * @param ctx the parse tree
 	 */
-	void enterBit_xor(CompilerParser.Bit_xorContext ctx);
+	void enterAdd_sub(CompilerParser.Add_subContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CompilerParser#bit_xor}.
+	 * Exit a parse tree produced by {@link CompilerParser#add_sub}.
 	 * @param ctx the parse tree
 	 */
-	void exitBit_xor(CompilerParser.Bit_xorContext ctx);
+	void exitAdd_sub(CompilerParser.Add_subContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CompilerParser#bit_and}.
+	 * Enter a parse tree produced by {@link CompilerParser#bitleft_right}.
 	 * @param ctx the parse tree
 	 */
-	void enterBit_and(CompilerParser.Bit_andContext ctx);
+	void enterBitleft_right(CompilerParser.Bitleft_rightContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CompilerParser#bit_and}.
+	 * Exit a parse tree produced by {@link CompilerParser#bitleft_right}.
 	 * @param ctx the parse tree
 	 */
-	void exitBit_and(CompilerParser.Bit_andContext ctx);
+	void exitBitleft_right(CompilerParser.Bitleft_rightContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CompilerParser#or}.
+	 * Enter a parse tree produced by {@link CompilerParser#less_greater}.
 	 * @param ctx the parse tree
 	 */
-	void enterOr(CompilerParser.OrContext ctx);
+	void enterLess_greater(CompilerParser.Less_greaterContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CompilerParser#or}.
+	 * Exit a parse tree produced by {@link CompilerParser#less_greater}.
 	 * @param ctx the parse tree
 	 */
-	void exitOr(CompilerParser.OrContext ctx);
+	void exitLess_greater(CompilerParser.Less_greaterContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CompilerParser#equal_notequal}.
+	 * @param ctx the parse tree
+	 */
+	void enterEqual_notequal(CompilerParser.Equal_notequalContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CompilerParser#equal_notequal}.
+	 * @param ctx the parse tree
+	 */
+	void exitEqual_notequal(CompilerParser.Equal_notequalContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CompilerParser#bitand}.
+	 * @param ctx the parse tree
+	 */
+	void enterBitand(CompilerParser.BitandContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CompilerParser#bitand}.
+	 * @param ctx the parse tree
+	 */
+	void exitBitand(CompilerParser.BitandContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CompilerParser#bitxor}.
+	 * @param ctx the parse tree
+	 */
+	void enterBitxor(CompilerParser.BitxorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CompilerParser#bitxor}.
+	 * @param ctx the parse tree
+	 */
+	void exitBitxor(CompilerParser.BitxorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CompilerParser#bitor}.
+	 * @param ctx the parse tree
+	 */
+	void enterBitor(CompilerParser.BitorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CompilerParser#bitor}.
+	 * @param ctx the parse tree
+	 */
+	void exitBitor(CompilerParser.BitorContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CompilerParser#and}.
 	 * @param ctx the parse tree
@@ -390,255 +430,15 @@ public interface CompilerListener extends ParseTreeListener {
 	 */
 	void exitAnd(CompilerParser.AndContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CompilerParser#less_than}.
+	 * Enter a parse tree produced by {@link CompilerParser#or}.
 	 * @param ctx the parse tree
 	 */
-	void enterLess_than(CompilerParser.Less_thanContext ctx);
+	void enterOr(CompilerParser.OrContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CompilerParser#less_than}.
+	 * Exit a parse tree produced by {@link CompilerParser#or}.
 	 * @param ctx the parse tree
 	 */
-	void exitLess_than(CompilerParser.Less_thanContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#greater_than}.
-	 * @param ctx the parse tree
-	 */
-	void enterGreater_than(CompilerParser.Greater_thanContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#greater_than}.
-	 * @param ctx the parse tree
-	 */
-	void exitGreater_than(CompilerParser.Greater_thanContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#less_than_equal}.
-	 * @param ctx the parse tree
-	 */
-	void enterLess_than_equal(CompilerParser.Less_than_equalContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#less_than_equal}.
-	 * @param ctx the parse tree
-	 */
-	void exitLess_than_equal(CompilerParser.Less_than_equalContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#greater_than_equal}.
-	 * @param ctx the parse tree
-	 */
-	void enterGreater_than_equal(CompilerParser.Greater_than_equalContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#greater_than_equal}.
-	 * @param ctx the parse tree
-	 */
-	void exitGreater_than_equal(CompilerParser.Greater_than_equalContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#not_equal}.
-	 * @param ctx the parse tree
-	 */
-	void enterNot_equal(CompilerParser.Not_equalContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#not_equal}.
-	 * @param ctx the parse tree
-	 */
-	void exitNot_equal(CompilerParser.Not_equalContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#equal}.
-	 * @param ctx the parse tree
-	 */
-	void enterEqual(CompilerParser.EqualContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#equal}.
-	 * @param ctx the parse tree
-	 */
-	void exitEqual(CompilerParser.EqualContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#bit_right}.
-	 * @param ctx the parse tree
-	 */
-	void enterBit_right(CompilerParser.Bit_rightContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#bit_right}.
-	 * @param ctx the parse tree
-	 */
-	void exitBit_right(CompilerParser.Bit_rightContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#bit_left}.
-	 * @param ctx the parse tree
-	 */
-	void enterBit_left(CompilerParser.Bit_leftContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#bit_left}.
-	 * @param ctx the parse tree
-	 */
-	void exitBit_left(CompilerParser.Bit_leftContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#difference}.
-	 * @param ctx the parse tree
-	 */
-	void enterDifference(CompilerParser.DifferenceContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#difference}.
-	 * @param ctx the parse tree
-	 */
-	void exitDifference(CompilerParser.DifferenceContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#sum}.
-	 * @param ctx the parse tree
-	 */
-	void enterSum(CompilerParser.SumContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#sum}.
-	 * @param ctx the parse tree
-	 */
-	void exitSum(CompilerParser.SumContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#modulus}.
-	 * @param ctx the parse tree
-	 */
-	void enterModulus(CompilerParser.ModulusContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#modulus}.
-	 * @param ctx the parse tree
-	 */
-	void exitModulus(CompilerParser.ModulusContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#quotient}.
-	 * @param ctx the parse tree
-	 */
-	void enterQuotient(CompilerParser.QuotientContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#quotient}.
-	 * @param ctx the parse tree
-	 */
-	void exitQuotient(CompilerParser.QuotientContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#product}.
-	 * @param ctx the parse tree
-	 */
-	void enterProduct(CompilerParser.ProductContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#product}.
-	 * @param ctx the parse tree
-	 */
-	void exitProduct(CompilerParser.ProductContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#power}.
-	 * @param ctx the parse tree
-	 */
-	void enterPower(CompilerParser.PowerContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#power}.
-	 * @param ctx the parse tree
-	 */
-	void exitPower(CompilerParser.PowerContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#subscript}.
-	 * @param ctx the parse tree
-	 */
-	void enterSubscript(CompilerParser.SubscriptContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#subscript}.
-	 * @param ctx the parse tree
-	 */
-	void exitSubscript(CompilerParser.SubscriptContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#strong_terms}.
-	 * @param ctx the parse tree
-	 */
-	void enterStrong_terms(CompilerParser.Strong_termsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#strong_terms}.
-	 * @param ctx the parse tree
-	 */
-	void exitStrong_terms(CompilerParser.Strong_termsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#weak_terms}.
-	 * @param ctx the parse tree
-	 */
-	void enterWeak_terms(CompilerParser.Weak_termsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#weak_terms}.
-	 * @param ctx the parse tree
-	 */
-	void exitWeak_terms(CompilerParser.Weak_termsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#unary_operation}.
-	 * @param ctx the parse tree
-	 */
-	void enterUnary_operation(CompilerParser.Unary_operationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#unary_operation}.
-	 * @param ctx the parse tree
-	 */
-	void exitUnary_operation(CompilerParser.Unary_operationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#increment_postfix}.
-	 * @param ctx the parse tree
-	 */
-	void enterIncrement_postfix(CompilerParser.Increment_postfixContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#increment_postfix}.
-	 * @param ctx the parse tree
-	 */
-	void exitIncrement_postfix(CompilerParser.Increment_postfixContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#decrement_postfix}.
-	 * @param ctx the parse tree
-	 */
-	void enterDecrement_postfix(CompilerParser.Decrement_postfixContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#decrement_postfix}.
-	 * @param ctx the parse tree
-	 */
-	void exitDecrement_postfix(CompilerParser.Decrement_postfixContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#increment_prefix}.
-	 * @param ctx the parse tree
-	 */
-	void enterIncrement_prefix(CompilerParser.Increment_prefixContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#increment_prefix}.
-	 * @param ctx the parse tree
-	 */
-	void exitIncrement_prefix(CompilerParser.Increment_prefixContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#decrement_prefix}.
-	 * @param ctx the parse tree
-	 */
-	void enterDecrement_prefix(CompilerParser.Decrement_prefixContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#decrement_prefix}.
-	 * @param ctx the parse tree
-	 */
-	void exitDecrement_prefix(CompilerParser.Decrement_prefixContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#negate}.
-	 * @param ctx the parse tree
-	 */
-	void enterNegate(CompilerParser.NegateContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#negate}.
-	 * @param ctx the parse tree
-	 */
-	void exitNegate(CompilerParser.NegateContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#not}.
-	 * @param ctx the parse tree
-	 */
-	void enterNot(CompilerParser.NotContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#not}.
-	 * @param ctx the parse tree
-	 */
-	void exitNot(CompilerParser.NotContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#bit_not}.
-	 * @param ctx the parse tree
-	 */
-	void enterBit_not(CompilerParser.Bit_notContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#bit_not}.
-	 * @param ctx the parse tree
-	 */
-	void exitBit_not(CompilerParser.Bit_notContext ctx);
+	void exitOr(CompilerParser.OrContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CompilerParser#type}.
 	 * @param ctx the parse tree
