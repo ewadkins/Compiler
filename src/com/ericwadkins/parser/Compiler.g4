@@ -29,34 +29,35 @@ import Configuration;
 
 root: element* EOF;
 
-element: declaration | instantiation | assignment | discarded_statement
-    | if_statement else_if_statement* else_statement? | function
-    | return_statement | block | native_block;
+element: basic_element | block_element;
+
+basic_element: (declaration | instantiation | assignment | discarded_statement | return_statement) ';';
+block_element: if_statement | else_if_statement | else_statement | function | block | native_block;
 
 block: '{' element* '}';
 native_block: NATIVE '{' .*? '}';
 
 NATIVE: 'native';
 
-declaration: type variable ';';
-instantiation: type variable '=' expression ';';
-discarded_statement: expression ';';
+declaration: type variable;
+instantiation: type variable '=' expression;
+discarded_statement: expression;
 
 assignment: direct_assign | sum_assign | difference_assign | product_assign | quotient_assign | modulus_assign
     | power_assign | bit_left_assign | bit_right_assign | bit_and_assign | bit_xor_assign | bit_or_assign;
 
-direct_assign: variable '=' expression ';';
-sum_assign: variable '+=' expression ';';
-difference_assign: variable '-=' expression ';';
-product_assign: variable '*=' expression ';';
-quotient_assign: variable '/=' expression ';';
-modulus_assign: variable '%=' expression ';';
-power_assign: variable '**=' expression ';';
-bit_left_assign: variable '<<=' expression ';';
-bit_right_assign: variable '<<=' expression ';';
-bit_and_assign: variable '&=' expression ';';
-bit_xor_assign: variable '^=' expression ';';
-bit_or_assign: variable '|=' expression ';';
+direct_assign: variable '=' expression;
+sum_assign: variable '+=' expression;
+difference_assign: variable '-=' expression;
+product_assign: variable '*=' expression;
+quotient_assign: variable '/=' expression;
+modulus_assign: variable '%=' expression;
+power_assign: variable '**=' expression;
+bit_left_assign: variable '<<=' expression;
+bit_right_assign: variable '<<=' expression;
+bit_and_assign: variable '&=' expression;
+bit_xor_assign: variable '^=' expression;
+bit_or_assign: variable '|=' expression;
 
 if_statement: IF '(' expression ')' element;
 else_if_statement: ELSE IF '(' expression ')' element;
@@ -64,8 +65,13 @@ else_statement: ELSE element;
 IF: 'if';
 ELSE: 'else';
 
+for_loop: FOR '(' expression ')' element;
+while_loop: WHILE '(' expression ')' element;
+FOR: 'for';
+WHILE: 'while';
+
 function: type variable ('(' ((type variable ',')* type variable)? ')') element;
-return_statement: RETURN expression ';';
+return_statement: RETURN expression;
 RETURN: 'return';
 
 expression: ('(' expression ')' | operand | operation);
@@ -95,17 +101,17 @@ product: (strong_terms | power) ('*' (strong_terms | power))*;
 power: (strong_terms | subscript) ('**' (strong_terms | subscript))?;
 subscript: (strong_terms) ('[' (strong_terms) ']')?;
 
-strong_terms: unary_operation | '(' expression ')' | operand;
+strong_terms: unary_operation | weak_terms;
 weak_terms: '(' expression ')' | operand;
 
 unary_operation: increment_postfix | decrement_postfix | increment_prefix | decrement_prefix | negate | not | bit_not;
-increment_postfix: ('(' expression ')' | operand) '++';
-decrement_postfix: ('(' expression ')' | operand) '--';
-increment_prefix: '++' ('(' expression ')' | operand);
-decrement_prefix: '--' ('(' expression ')' | operand);
-negate: '-' ('(' expression ')' | operand);
-not: '!' ('(' expression ')' | operand);
-bit_not: '~' ('(' expression ')' | operand);
+increment_postfix: weak_terms '++';
+decrement_postfix: weak_terms '--';
+increment_prefix: '++' weak_terms;
+decrement_prefix: '--' weak_terms;
+negate: '-' weak_terms;
+not: '!' weak_terms;
+bit_not: '~' weak_terms;
 
 type: TYPE '[]'?;
 variable: VARIABLE;

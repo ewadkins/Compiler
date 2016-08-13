@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eb90f81-a87f-48e4-9292-de5d8d020697" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/CompilerMainListener.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/CompilerMainListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/parser/Compiler.g4" afterPath="$PROJECT_DIR$/src/com/ericwadkins/parser/Compiler.g4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/parser/Compiler.tokens" afterPath="$PROJECT_DIR$/src/com/ericwadkins/parser/Compiler.tokens" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerBaseListener.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerBaseListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerLexer.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerLexer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerLexer.tokens" afterPath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerLexer.tokens" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerListener.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerParser.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerParser.java" />
     </list>
     <ignored path="Compiler.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,16 +33,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CompilerMainListener.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CompilerMainListener.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/compiler/CompilerMainListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41323793">
-              <caret line="73" column="70" selection-start-line="73" selection-start-column="70" selection-end-line="73" selection-end-column="70" />
+            <state vertical-scroll-proportion="-11.0">
+              <caret line="957" column="131" selection-start-line="957" selection-start-column="131" selection-end-line="957" selection-end-column="131" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1420#1421#0" expanded="true" />
                 <element signature="e#1469#1470#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test2.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test2.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -60,7 +78,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/compiler/Compiler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="73" selection-start-line="46" selection-start-column="73" selection-end-line="46" selection-end-column="73" />
+              <caret line="30" column="72" selection-start-line="30" selection-start-column="72" selection-end-line="30" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,17 +102,17 @@
         <entry file="file://$PROJECT_DIR$/test.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Compiler.g4" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Compiler.g4" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/parser/Compiler.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.59749556">
+              <caret line="91" column="61" selection-start-line="91" selection-start-column="61" selection-end-line="91" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -120,9 +138,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/PowerAssignment.java" />
-        <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/ProductAssignment.java" />
-        <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/QuotientAssignment.java" />
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/SumAssignment.java" />
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/Block.java" />
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/BlockElement.java" />
@@ -140,7 +155,6 @@
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Number.java" />
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/String.java" />
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Type.java" />
-        <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Expression.java" />
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/Declaration.java" />
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/Instantiation.java" />
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Equal.java" />
@@ -169,7 +183,11 @@
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Quotient.java" />
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Subscript.java" />
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Sum.java" />
+        <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Expression.java" />
+        <option value="$PROJECT_DIR$/test2.txt" />
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/Compiler.java" />
+        <option value="$PROJECT_DIR$/test.txt" />
+        <option value="$PROJECT_DIR$/src/com/ericwadkins/parser/Compiler.g4" />
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/CompilerMainListener.java" />
       </list>
     </option>
@@ -942,12 +960,12 @@
       <created>1470845375313</created>
       <option name="number" value="Default" />
       <updated>1470845375313</updated>
-      <workItem from="1470845380603" duration="89957000" />
+      <workItem from="1470845380603" duration="94661000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89957000" />
+    <option name="totallyTimeSpent" value="94661000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="140" y="43" width="1400" height="945" extended-state="0" />
@@ -960,7 +978,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1003,22 +1021,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/QuotientAssignment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26833633">
-          <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/SumAssignment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26833633">
-          <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/Block.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1429,30 +1431,46 @@
     <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/compiler/Compiler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="73" selection-start-line="46" selection-start-column="73" selection-end-line="46" selection-end-column="73" />
+          <caret line="30" column="72" selection-start-line="30" selection-start-column="72" selection-end-line="30" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test2.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/compiler/CompilerMainListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41323793">
-          <caret line="73" column="70" selection-start-line="73" selection-start-column="70" selection-end-line="73" selection-end-column="70" />
+        <state vertical-scroll-proportion="-11.0">
+          <caret line="957" column="131" selection-start-line="957" selection-start-column="131" selection-end-line="957" selection-end-column="131" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1420#1421#0" expanded="true" />
             <element signature="e#1469#1470#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/parser/Compiler.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59749556">
+          <caret line="91" column="61" selection-start-line="91" selection-start-column="61" selection-end-line="91" selection-end-column="61" />
+          <folding />
         </state>
       </provider>
     </entry>

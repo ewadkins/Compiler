@@ -30,6 +30,26 @@ public interface CompilerListener extends ParseTreeListener {
 	 */
 	void exitElement(CompilerParser.ElementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CompilerParser#basic_element}.
+	 * @param ctx the parse tree
+	 */
+	void enterBasic_element(CompilerParser.Basic_elementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CompilerParser#basic_element}.
+	 * @param ctx the parse tree
+	 */
+	void exitBasic_element(CompilerParser.Basic_elementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CompilerParser#block_element}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlock_element(CompilerParser.Block_elementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CompilerParser#block_element}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlock_element(CompilerParser.Block_elementContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CompilerParser#block}.
 	 * @param ctx the parse tree
 	 */
@@ -239,6 +259,26 @@ public interface CompilerListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitElse_statement(CompilerParser.Else_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CompilerParser#for_loop}.
+	 * @param ctx the parse tree
+	 */
+	void enterFor_loop(CompilerParser.For_loopContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CompilerParser#for_loop}.
+	 * @param ctx the parse tree
+	 */
+	void exitFor_loop(CompilerParser.For_loopContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CompilerParser#while_loop}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhile_loop(CompilerParser.While_loopContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CompilerParser#while_loop}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhile_loop(CompilerParser.While_loopContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CompilerParser#function}.
 	 * @param ctx the parse tree

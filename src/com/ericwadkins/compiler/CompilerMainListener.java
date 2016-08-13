@@ -65,7 +65,15 @@ public class CompilerMainListener implements CompilerListener {
 
 	@Override public void exitElement(CompilerParser.ElementContext ctx) { }
 
-	@Override public void enterBlock(CompilerParser.BlockContext ctx) {
+    @Override public void enterBasic_element(CompilerParser.Basic_elementContext ctx) { }
+
+    @Override public void exitBasic_element(CompilerParser.Basic_elementContext ctx) { }
+
+    @Override public void enterBlock_element(CompilerParser.Block_elementContext ctx) { }
+
+    @Override public void exitBlock_element(CompilerParser.Block_elementContext ctx) { }
+
+    @Override public void enterBlock(CompilerParser.BlockContext ctx) {
         if (debug) System.out.println("Entering Block");
 
         blocks.push(new Block(blocks.peek(), ctx.getStart()));
@@ -377,7 +385,21 @@ public class CompilerMainListener implements CompilerListener {
         if (debug) System.out.println("\t" + elseStatement);
     }
 
-	@Override public void enterFunction(CompilerParser.FunctionContext ctx) { }
+    @Override public void enterFor_loop(CompilerParser.For_loopContext ctx) { }
+
+    @Override
+    public void exitFor_loop(CompilerParser.For_loopContext ctx) {
+
+    }
+
+    @Override public void enterWhile_loop(CompilerParser.While_loopContext ctx) { }
+
+    @Override
+    public void exitWhile_loop(CompilerParser.While_loopContext ctx) {
+
+    }
+
+    @Override public void enterFunction(CompilerParser.FunctionContext ctx) { }
 
 	@Override public void exitFunction(CompilerParser.FunctionContext ctx) {
         if (debug) System.out.println("Exiting Function");
@@ -925,15 +947,15 @@ public class CompilerMainListener implements CompilerListener {
 
     @Override public void enterWeak_terms(CompilerParser.Weak_termsContext ctx) { }
 
-    @Override public void exitWeak_terms(CompilerParser.Weak_termsContext ctx) { }
+    @Override public void exitWeak_terms(CompilerParser.Weak_termsContext ctx) { System.out.println("EXIT WEAK TERMS");}
 
     @Override public void enterStrong_terms(CompilerParser.Strong_termsContext ctx) { }
 
-    @Override public void exitStrong_terms(CompilerParser.Strong_termsContext ctx) { }
+    @Override public void exitStrong_terms(CompilerParser.Strong_termsContext ctx) { System.out.println("EXIT STRONG TERMS");}
 
     @Override public void enterUnary_operation(CompilerParser.Unary_operationContext ctx) { }
 
-    @Override public void exitUnary_operation(CompilerParser.Unary_operationContext ctx) { }
+    @Override public void exitUnary_operation(CompilerParser.Unary_operationContext ctx) { System.out.println("EXIT UNARY OPERATION");}
 
     @Override public void enterType(CompilerParser.TypeContext ctx) { }
 
@@ -1017,7 +1039,7 @@ public class CompilerMainListener implements CompilerListener {
 
 	@Override public void exitEveryRule(ParserRuleContext ctx) {
         //if (debug) System.out.println("\t" + stack);
-        if (debug) System.out.println("\t" + ctx.start);
+        //if (debug) System.out.println("\t" + ctx.start);
     }
 
 	@Override public void visitTerminal(TerminalNode node) { }
