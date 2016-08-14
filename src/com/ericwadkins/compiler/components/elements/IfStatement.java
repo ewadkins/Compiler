@@ -12,10 +12,10 @@ import java.util.List;
  */
 public class IfStatement extends BlockElement {
 
-    protected final Expression expression;
+    public final Expression expression;
 
-    public IfStatement(Expression expression, Block block, Block parent, Token token) {
-        super(block, parent, token);
+    public IfStatement(Expression expression, Block block, Token token) {
+        super(block, token);
         this.expression = expression;
     }
 
@@ -28,6 +28,9 @@ public class IfStatement extends BlockElement {
 
     @Override
     public java.lang.String toString() {
-        return "if (" + expression + ") " + block;
+        return "if "
+                + (expression.toString().startsWith("(") && expression.toString().endsWith(")")
+                ? expression : "(" + expression + ")")
+                + " " + block;
     }
 }

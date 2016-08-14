@@ -11,10 +11,10 @@ import java.util.List;
  */
 public class Boolean extends Primitive {
 
-    protected final java.lang.String bool;
+    public final java.lang.String bool;
 
-    public Boolean(java.lang.String bool, Block parent, Token token) {
-        super(parent, token);
+    public Boolean(java.lang.String bool, Token token) {
+        super(token);
         this.bool = bool;
     }
 

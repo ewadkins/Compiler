@@ -13,8 +13,8 @@ import java.util.List;
  */
 public class BitwiseNot extends UnaryOperation {
 
-    public BitwiseNot(Expression expression, Block parent, Token token) {
-        super(expression, parent, token);
+    public BitwiseNot(Expression expression, Token token) {
+        super(expression, token);
     }
 
     @Override

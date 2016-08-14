@@ -11,30 +11,30 @@ import Configuration;
 
 root: element* EOF;
 
-element: statement | block_element;
+element: basic_element | block_element;
 
-statement: (basic_statement | flow_statement) ';';
-basic_statement: declaration | instantiation | assignment | discarded_statement;
-flow_statement: return_statement | break_statement | continue_statement;
+basic_element: (statement_set | declaration_set | flow_statement) ';';
+
 block_element: if_statement | else_if_statement | else_statement | for_loop | while_loop | do_while_loop
-    | function | block;
+    | function | block /*| native_block*/;
+
+statement_set: statement (',' statement)*;
+statement: assignment | expression;
+
+declaration_set: type declaration (',' declaration)*;
+declaration: variable | direct_assign;
+
+flow_statement: return_statement | break_statement | continue_statement;
+
 block: '{' element* '}';
+//native_block: NATIVE '<{' .*? '}>';
 
-//native_block: NATIVE '{' .*? '}';
-//NATIVE: 'native';
-
-declaration: type variable;
-instantiation: type variable '=' expression;
 assignment: direct_assign | sum_assign | difference_assign | product_assign | quotient_assign | modulus_assign
     | power_assign | bit_left_assign | bit_right_assign | bit_and_assign | bit_xor_assign | bit_or_assign;
-discarded_statement: expression;
+
 return_statement: RETURN expression;
 break_statement: BREAK;
 continue_statement: CONTINUE;
-
-RETURN: 'return';
-BREAK: 'break';
-CONTINUE: 'continue';
 
 direct_assign: variable '=' expression;
 sum_assign: variable '+=' expression;
@@ -52,19 +52,14 @@ bit_or_assign: variable '|=' expression;
 if_statement: IF '(' expression ')' element;
 else_if_statement: ELSE IF '(' expression? ')' element;
 else_statement: ELSE element;
-IF: 'if';
-ELSE: 'else';
 
 for_loop: FOR '(' initialization? ';' condition? ';' update? ')' element;
 while_loop: WHILE '(' condition? ')' element;
 do_while_loop: DO element WHILE '(' condition? ')' ';';
 
-initialization: basic_statement;
+initialization: statement_set | declaration_set;
 condition: expression;
-update: declaration | instantiation | assignment | discarded_statement; // any basic_statement except declaration
-FOR: 'for';
-WHILE: 'while';
-DO: 'do';
+update: statement_set | declaration_set; // any basic_statement except declaration
 
 function: type variable ('(' ((type variable ',')* type variable)? ')') element;
 
@@ -100,6 +95,16 @@ bitxor: '^';
 bitor: '|';
 and: '&&';
 or: '||';
+
+NATIVE: 'native';
+RETURN: 'return';
+BREAK: 'break';
+CONTINUE: 'continue';
+IF: 'if';
+ELSE: 'else';
+FOR: 'for';
+WHILE: 'while';
+DO: 'do';
 
 type: TYPE '[]'?;
 variable: VARIABLE;

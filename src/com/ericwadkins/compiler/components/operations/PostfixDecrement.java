@@ -13,8 +13,8 @@ import java.util.List;
  */
 public class PostfixDecrement extends UnaryOperation {
 
-    public PostfixDecrement(Expression expression, Block parent, Token token) {
-        super(expression, parent, token);
+    public PostfixDecrement(Expression expression, Token token) {
+        super(expression, token);
     }
 
     @Override

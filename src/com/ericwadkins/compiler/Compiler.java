@@ -26,8 +26,8 @@ public class Compiler {
     public static void main(String[] args) {
 
         try {
-            String input = new String(Files.readAllBytes(Paths.get("test3.txt")))
-                    .replaceAll("\\/\\*[\\s\\S]*\\*\\/", "").replaceAll("\\/\\/.*", ""); // Removes comments
+            String input = new String(Files.readAllBytes(Paths.get("test4.txt")))
+                    .replaceAll("\\/\\*((?!\\*\\/).|\\s)*\\*\\/", "").replaceAll("\\/\\/.*", ""); // Removes comments
             System.out.println(input);
             System.out.println("==================================\n");
 
@@ -49,21 +49,23 @@ public class Compiler {
                 long endParsing = System.nanoTime();
                 System.out.println("########################################\n");
 
+                List<Block> blocks = ((CompilerMainListener) listener).getBlocks();
+
                 if (showTree) {
                     // show AST in GUI
                     JFrame frame = new JFrame("Antlr AST");
                     JPanel panel = new JPanel();
+                    JScrollPane scroll = new JScrollPane(panel);
                     TreeViewer view = new TreeViewer(Arrays.asList(parser.getRuleNames()), tree);
                     view.setScale(0.75);
                     panel.add(view);
-                    frame.add(panel);
+                    frame.add(scroll);
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.setSize(1675,800);
                     frame.setVisible(true);
                 }
 
                 /*System.out.println("Compiling...\n########################################");
-                List<Block> blocks = ((CompilerMainListener) listener).getBlocks();
                 long startCompiling = System.nanoTime();
                 compile(blocks);
                 long endCompiling = System.nanoTime();

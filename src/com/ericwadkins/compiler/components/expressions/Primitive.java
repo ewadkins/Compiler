@@ -8,8 +8,8 @@ import org.antlr.v4.runtime.Token;
  */
 public abstract class Primitive extends Expression {
 
-    public Primitive(Block parent, Token token) {
-        super(parent, token);
+    public Primitive(Token token) {
+        super(token);
     }
 
 }

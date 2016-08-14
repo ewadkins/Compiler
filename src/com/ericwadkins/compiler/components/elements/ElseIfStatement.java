@@ -12,10 +12,10 @@ import java.util.List;
  */
 public class ElseIfStatement extends BlockElement {
 
-    protected final Expression expression;
+    public final Expression expression;
 
-    public ElseIfStatement(Expression expression, Block block, Block parent, Token token) {
-        super(block, parent, token);
+    public ElseIfStatement(Expression expression, Block block, Token token) {
+        super(block, token);
         this.expression = expression;
     }
 
@@ -28,6 +28,8 @@ public class ElseIfStatement extends BlockElement {
 
     @Override
     public java.lang.String toString() {
-        return "else if (" + expression + ") " + block;
+        return "else if (" + (expression.toString().startsWith("(") && expression.toString().endsWith(")")
+                ? expression : "(" + expression + ")")
+                + " " + block;
     }
 }

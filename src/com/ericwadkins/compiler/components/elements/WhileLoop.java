@@ -12,10 +12,10 @@ import java.util.List;
  */
 public class WhileLoop extends BlockElement {
 
-    protected final Expression condition;
+    public final Expression condition;
 
-    public WhileLoop(Expression condition, Block block, Block parent, Token token) {
-        super(block, parent, token);
+    public WhileLoop(Expression condition, Block block, Token token) {
+        super(block, token);
         this.condition = condition;
     }
 
@@ -29,6 +29,8 @@ public class WhileLoop extends BlockElement {
 
     @Override
     public String toString() {
-        return "while (" + (condition != null ? condition : "") + ") " + block;
+        return "while (" + (condition != null
+                ? (condition.toString().startsWith("(") && condition.toString().endsWith(")")
+                ? condition.toString().substring(1, condition.toString().length() - 1) : condition) : "") + ") " + block;
     }
 }

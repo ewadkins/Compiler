@@ -13,27 +13,33 @@ public class Block extends Element implements Comparable {
 
     private static long BLOCK_COUNT = 0;
 
-    protected final long blockId;
-    protected final List<Element> elements = new ArrayList();
+    public final long blockId;
+    public final List<Element> elements = new ArrayList();
 
     public Block() { // Master block
-        super(null, null);
+        super(null);
         blockId = BLOCK_COUNT;
         BLOCK_COUNT++;
     }
 
-    public Block(Block parent, Token token) {
-        super(parent, token);
+    public Block(Token token) {
+        super(token);
         blockId = BLOCK_COUNT;
         BLOCK_COUNT++;
     }
 
     public void add(Element element) {
+        element.parent = this;
+        if (element instanceof BlockElement) {
+            ((BlockElement) element).block.parent = this;
+        }
         elements.add(element);
     }
 
     public void addAll(List<Element> elementList) {
-        elements.addAll(elementList);
+        for (int i = 0; i < elementList.size(); i++) {
+            add(elementList.get(i));
+        }
     }
 
     public List<Element> getElementsInScope() {
@@ -97,9 +103,30 @@ public class Block extends Element implements Comparable {
         return variables;
     }
 
+    public int getDepth() {
+        if (parent == null) {
+            return 1;
+        }
+        return parent.getDepth() + 1;
+    }
+
     @Override
     public java.lang.String toString() {
-        return "{BLOCK " + blockId + (blockId == 0 ? " master" : "") + "}";
+        int depth = getDepth();
+        java.lang.String s =  "{";
+        for (int i = 0; i < elements.size(); i++) {
+            s += "\n";
+            for (int j = 0; j < depth; j++) {
+                s += "    ";
+            }
+            s += elements.get(i);
+        }
+        s += "\n";
+        for (int j = 0; j < depth - 1; j++) {
+            s += "    ";
+        }
+        s += "}";
+        return s;
     }
 
     @Override

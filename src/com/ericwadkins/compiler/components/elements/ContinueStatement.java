@@ -12,8 +12,8 @@ import java.util.List;
  */
 public class ContinueStatement extends Element {
 
-    public ContinueStatement(Block parent, Token token) {
-        super(parent, token);
+    public ContinueStatement(Token token) {
+        super(token);
     }
 
     @Override

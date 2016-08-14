@@ -11,8 +11,8 @@ import java.util.List;
  */
 public class ElseStatement extends BlockElement {
 
-    public ElseStatement(Block block, Block parent, Token token) {
-        super(block, parent, token);
+    public ElseStatement(Block block, Token token) {
+        super(block, token);
     }
 
     @Override

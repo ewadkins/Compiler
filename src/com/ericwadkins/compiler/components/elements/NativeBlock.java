@@ -10,10 +10,13 @@ import java.util.List;
 /**
  * Created by ericwadkins on 8/11/16.
  */
-public class BreakStatement extends Element {
+public class NativeBlock extends Element {
 
-    public BreakStatement(Token token) {
+    public final java.lang.String content;
+
+    public NativeBlock(java.lang.String content, Token token) {
         super(token);
+        this.content = content;
     }
 
     @Override
@@ -23,7 +26,7 @@ public class BreakStatement extends Element {
 
     @Override
     public String toString() {
-        return "break;";
+        return "native <{" + content + "}>";
     }
 
 }

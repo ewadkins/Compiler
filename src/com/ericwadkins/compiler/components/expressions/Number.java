@@ -11,10 +11,10 @@ import java.util.List;
  */
 public class Number extends Primitive {
 
-    protected final java.lang.String number;
+    public final java.lang.String number;
 
-    public Number(java.lang.String number, Block parent, Token token) {
-        super(parent, token);
+    public Number(java.lang.String number, Token token) {
+        super(token);
         this.number = number;
     }
 

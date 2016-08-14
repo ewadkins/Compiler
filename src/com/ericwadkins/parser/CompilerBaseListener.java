@@ -42,37 +42,13 @@ public class CompilerBaseListener implements CompilerListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatement(CompilerParser.StatementContext ctx) { }
+	@Override public void enterBasic_element(CompilerParser.Basic_elementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatement(CompilerParser.StatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterBasic_statement(CompilerParser.Basic_statementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitBasic_statement(CompilerParser.Basic_statementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterFlow_statement(CompilerParser.Flow_statementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFlow_statement(CompilerParser.Flow_statementContext ctx) { }
+	@Override public void exitBasic_element(CompilerParser.Basic_elementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -90,13 +66,37 @@ public class CompilerBaseListener implements CompilerListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBlock(CompilerParser.BlockContext ctx) { }
+	@Override public void enterStatement_set(CompilerParser.Statement_setContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBlock(CompilerParser.BlockContext ctx) { }
+	@Override public void exitStatement_set(CompilerParser.Statement_setContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStatement(CompilerParser.StatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStatement(CompilerParser.StatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDeclaration_set(CompilerParser.Declaration_setContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDeclaration_set(CompilerParser.Declaration_setContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -114,13 +114,25 @@ public class CompilerBaseListener implements CompilerListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstantiation(CompilerParser.InstantiationContext ctx) { }
+	@Override public void enterFlow_statement(CompilerParser.Flow_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstantiation(CompilerParser.InstantiationContext ctx) { }
+	@Override public void exitFlow_statement(CompilerParser.Flow_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBlock(CompilerParser.BlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBlock(CompilerParser.BlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -133,18 +145,6 @@ public class CompilerBaseListener implements CompilerListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAssignment(CompilerParser.AssignmentContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterDiscarded_statement(CompilerParser.Discarded_statementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitDiscarded_statement(CompilerParser.Discarded_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

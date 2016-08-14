@@ -14,11 +14,11 @@ import java.util.List;
  */
 public class Assignment extends Element {
 
-    protected final Variable variable;
-    protected final Expression expression;
+    public final Variable variable;
+    public final Expression expression;
 
-    public Assignment(Variable variable, Expression expression, Block parent, Token token) {
-        super(parent, token);
+    public Assignment(Variable variable, Expression expression, Token token) {
+        super(token);
         this.variable = variable;
         this.expression = expression;
     }

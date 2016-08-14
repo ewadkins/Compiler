@@ -10,10 +10,10 @@ import org.antlr.v4.runtime.Token;
  */
 public class Cast extends UnaryOperation {
 
-    protected final Type type;
+    public final Type type;
 
-    public Cast(Type type, Expression expression, Block parent, Token token) {
-        super(expression, parent, token);
+    public Cast(Type type, Expression expression, Token token) {
+        super(expression, token);
         this.type = type;
     }
 

@@ -8,10 +8,10 @@ import org.antlr.v4.runtime.Token;
  */
 public abstract class BlockElement extends Element {
 
-    protected final Block block;
+    public final Block block;
 
-    public BlockElement(Block block, Block parent, Token token) {
-        super(parent, token);
+    public BlockElement(Block block, Token token) {
+        super(token);
         this.block = block;
     }
 }

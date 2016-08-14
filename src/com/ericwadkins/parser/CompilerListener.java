@@ -30,35 +30,15 @@ public interface CompilerListener extends ParseTreeListener {
 	 */
 	void exitElement(CompilerParser.ElementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CompilerParser#statement}.
+	 * Enter a parse tree produced by {@link CompilerParser#basic_element}.
 	 * @param ctx the parse tree
 	 */
-	void enterStatement(CompilerParser.StatementContext ctx);
+	void enterBasic_element(CompilerParser.Basic_elementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CompilerParser#statement}.
+	 * Exit a parse tree produced by {@link CompilerParser#basic_element}.
 	 * @param ctx the parse tree
 	 */
-	void exitStatement(CompilerParser.StatementContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#basic_statement}.
-	 * @param ctx the parse tree
-	 */
-	void enterBasic_statement(CompilerParser.Basic_statementContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#basic_statement}.
-	 * @param ctx the parse tree
-	 */
-	void exitBasic_statement(CompilerParser.Basic_statementContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#flow_statement}.
-	 * @param ctx the parse tree
-	 */
-	void enterFlow_statement(CompilerParser.Flow_statementContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#flow_statement}.
-	 * @param ctx the parse tree
-	 */
-	void exitFlow_statement(CompilerParser.Flow_statementContext ctx);
+	void exitBasic_element(CompilerParser.Basic_elementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CompilerParser#block_element}.
 	 * @param ctx the parse tree
@@ -70,15 +50,35 @@ public interface CompilerListener extends ParseTreeListener {
 	 */
 	void exitBlock_element(CompilerParser.Block_elementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CompilerParser#block}.
+	 * Enter a parse tree produced by {@link CompilerParser#statement_set}.
 	 * @param ctx the parse tree
 	 */
-	void enterBlock(CompilerParser.BlockContext ctx);
+	void enterStatement_set(CompilerParser.Statement_setContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CompilerParser#block}.
+	 * Exit a parse tree produced by {@link CompilerParser#statement_set}.
 	 * @param ctx the parse tree
 	 */
-	void exitBlock(CompilerParser.BlockContext ctx);
+	void exitStatement_set(CompilerParser.Statement_setContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CompilerParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterStatement(CompilerParser.StatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CompilerParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitStatement(CompilerParser.StatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CompilerParser#declaration_set}.
+	 * @param ctx the parse tree
+	 */
+	void enterDeclaration_set(CompilerParser.Declaration_setContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CompilerParser#declaration_set}.
+	 * @param ctx the parse tree
+	 */
+	void exitDeclaration_set(CompilerParser.Declaration_setContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CompilerParser#declaration}.
 	 * @param ctx the parse tree
@@ -90,15 +90,25 @@ public interface CompilerListener extends ParseTreeListener {
 	 */
 	void exitDeclaration(CompilerParser.DeclarationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CompilerParser#instantiation}.
+	 * Enter a parse tree produced by {@link CompilerParser#flow_statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterInstantiation(CompilerParser.InstantiationContext ctx);
+	void enterFlow_statement(CompilerParser.Flow_statementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CompilerParser#instantiation}.
+	 * Exit a parse tree produced by {@link CompilerParser#flow_statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitInstantiation(CompilerParser.InstantiationContext ctx);
+	void exitFlow_statement(CompilerParser.Flow_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CompilerParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlock(CompilerParser.BlockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CompilerParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlock(CompilerParser.BlockContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CompilerParser#assignment}.
 	 * @param ctx the parse tree
@@ -109,16 +119,6 @@ public interface CompilerListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAssignment(CompilerParser.AssignmentContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link CompilerParser#discarded_statement}.
-	 * @param ctx the parse tree
-	 */
-	void enterDiscarded_statement(CompilerParser.Discarded_statementContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CompilerParser#discarded_statement}.
-	 * @param ctx the parse tree
-	 */
-	void exitDiscarded_statement(CompilerParser.Discarded_statementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CompilerParser#return_statement}.
 	 * @param ctx the parse tree

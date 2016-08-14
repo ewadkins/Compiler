@@ -5,8 +5,8 @@ package com.ericwadkins.compiler.components.expressions;
  */
 public class Type {
 
-    protected final java.lang.String type;
-    protected final boolean array;
+    public final java.lang.String type;
+    public final boolean array;
 
     public Type(java.lang.String type, boolean array) {
         this.type = type;

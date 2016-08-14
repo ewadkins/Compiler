@@ -10,13 +10,13 @@ import org.antlr.v4.runtime.Token;
  */
 public class BitwiseOrAssignment extends Assignment {
 
-    public BitwiseOrAssignment(Variable variable, Expression expression, Block parent, Token token) {
-        super(variable, expression, parent, token);
+    public BitwiseOrAssignment(Variable variable, Expression expression, Token token) {
+        super(variable, expression, token);
     }
 
     @Override
     public java.lang.String toString() {
-        return variable + " |= " + expression + ";";
+        return variable + " |= " + expression;
     }
 
 }

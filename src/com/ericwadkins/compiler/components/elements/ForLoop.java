@@ -12,12 +12,12 @@ import java.util.List;
  */
 public class ForLoop extends BlockElement {
 
-    protected final Element initialization;
-    protected final Expression condition;
-    protected final Element update;
+    public final Element initialization;
+    public final Expression condition;
+    public final Element update;
 
-    public ForLoop(Element initialization, Expression condition, Element update, Block block, Block parent, Token token) {
-        super(block, parent, token);
+    public ForLoop(Element initialization, Expression condition, Element update, Block block, Token token) {
+        super(block, token);
         this.initialization = initialization;
         this.condition = condition;
         this.update = update;
@@ -37,7 +37,8 @@ public class ForLoop extends BlockElement {
     public String toString() {
         return "for ("
                 + (initialization != null ? initialization : ";")
-                + (condition != null ? " " + condition + ";" : ";")
+                + (condition != null ? " " + (condition.toString().startsWith("(") && condition.toString().endsWith(")")
+                ? condition.toString().substring(1, condition.toString().length() - 1) : condition) + ";" : ";")
                 + (update != null ? " " + update.toString().replaceAll(";$", "") : "")
                 + ") " + block;
     }

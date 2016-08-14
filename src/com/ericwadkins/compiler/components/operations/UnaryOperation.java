@@ -13,10 +13,10 @@ import java.util.List;
  */
 public abstract class UnaryOperation extends Operation {
 
-    protected final Expression expression;
+    public final Expression expression;
 
-    public UnaryOperation(Expression expression, Block parent, Token token) {
-        super(parent, token);
+    public UnaryOperation(Expression expression, Token token) {
+        super(token);
         this.expression = expression;
     }
 

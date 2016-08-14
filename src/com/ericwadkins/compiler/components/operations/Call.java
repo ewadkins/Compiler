@@ -14,11 +14,11 @@ import java.util.List;
  */
 public class Call extends Operation {
 
-    protected final Expression expression;
-    protected final List<Expression> expressions;
+    public final Expression expression;
+    public final List<Expression> expressions;
 
-    public Call(Expression expression, List<Expression> expressions, Block parent, Token token) {
-        super(parent, token);
+    public Call(Expression expression, List<Expression> expressions, Token token) {
+        super(token);
         this.expression = expression;
         this.expressions = expressions;
     }

@@ -13,8 +13,8 @@ import java.util.List;
  */
 public class Plus extends UnaryOperation {
 
-    public Plus(Expression expression, Block parent, Token token) {
-        super(expression, parent, token);
+    public Plus(Expression expression, Token token) {
+        super(expression, token);
     }
 
     @Override

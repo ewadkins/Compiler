@@ -13,11 +13,11 @@ import java.util.List;
  */
 public abstract class BinaryOperation extends Operation {
 
-    protected final Expression expression1;
-    protected final Expression expression2;
+    public final Expression expression1;
+    public final Expression expression2;
 
-    public BinaryOperation(Expression expression1, Expression expression2, Block parent, Token token) {
-        super(parent, token);
+    public BinaryOperation(Expression expression1, Expression expression2, Token token) {
+        super(token);
         this.expression1 = expression1;
         this.expression2 = expression2;
     }

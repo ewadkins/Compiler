@@ -13,8 +13,8 @@ import java.util.List;
  */
 public class Quotient extends BinaryOperation {
 
-    public Quotient(Expression expression1, Expression expression2, Block parent, Token token) {
-        super(expression1, expression2, parent, token);
+    public Quotient(Expression expression1, Expression expression2, Token token) {
+        super(expression1, expression2, token);
     }
 
     @Override

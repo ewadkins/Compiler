@@ -11,10 +11,10 @@ import java.util.List;
  */
 public class String extends Primitive {
 
-    protected final java.lang.String string;
+    public final java.lang.String string;
 
-    public String(java.lang.String string, Block parent, Token token) {
-        super(parent, token);
+    public String(java.lang.String string, Token token) {
+        super(token);
         this.string = string;
     }
 

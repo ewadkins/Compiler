@@ -11,10 +11,10 @@ import java.util.List;
  */
 public class Variable extends Expression {
 
-    protected final java.lang.String variable;
+    public final java.lang.String variable;
 
-    public Variable(java.lang.String variable, Block parent, Token token) {
-        super(parent, token);
+    public Variable(java.lang.String variable, Token token) {
+        super(token);
         this.variable = variable;
     }
 

@@ -9,10 +9,10 @@ import org.antlr.v4.runtime.Token;
  */
 public abstract class Expression extends Element {
 
-    protected Type type = null;
+    public Type type = null;
 
-    public Expression(Block parent, Token token) {
-        super(parent, token);
+    public Expression(Token token) {
+        super(token);
     }
 
     public Type getType() {

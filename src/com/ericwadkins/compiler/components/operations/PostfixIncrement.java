@@ -13,8 +13,8 @@ import java.util.List;
  */
 public class PostfixIncrement extends UnaryOperation {
 
-    public PostfixIncrement(Expression expression, Block parent, Token token) {
-        super(expression, parent, token);
+    public PostfixIncrement(Expression expression, Token token) {
+        super(expression, token);
     }
 
     @Override

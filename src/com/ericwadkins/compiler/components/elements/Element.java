@@ -12,11 +12,10 @@ import java.util.List;
  */
 public abstract class Element {
 
-    protected final Block parent;
-    protected final Token token;
+    public Block parent = null;
+    public final Token token;
 
-    public Element(Block parent, Token token) {
-        this.parent = parent;
+    public Element(Token token) {
         this.token = token;
     }
 

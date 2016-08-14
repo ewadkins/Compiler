@@ -12,10 +12,10 @@ import java.util.List;
  */
 public class ReturnStatement extends Element {
 
-    protected final Expression expression;
+    public final Expression expression;
 
-    public ReturnStatement(Expression expression, Block parent, Token token) {
-        super(parent, token);
+    public ReturnStatement(Expression expression, Token token) {
+        super(token);
         this.expression = expression;
     }
 

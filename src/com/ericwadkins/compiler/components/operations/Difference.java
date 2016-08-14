@@ -13,8 +13,8 @@ import java.util.List;
  */
 public class Difference extends BinaryOperation {
 
-    public Difference(Expression expression1, Expression expression2, Block parent, Token token) {
-        super(expression1, expression2, parent, token);
+    public Difference(Expression expression1, Expression expression2, Token token) {
+        super(expression1, expression2, token);
     }
 
     @Override

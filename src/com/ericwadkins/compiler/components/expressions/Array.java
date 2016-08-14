@@ -11,10 +11,10 @@ import java.util.List;
  */
 public class Array extends Primitive {
 
-    protected final List<Expression> expressions;
+    public final List<Expression> expressions;
 
-    public Array(List<Expression> expressions, Block parent, Token token) {
-        super(parent, token);
+    public Array(List<Expression> expressions, Token token) {
+        super(token);
         this.expressions = new ArrayList(expressions);
     }
 

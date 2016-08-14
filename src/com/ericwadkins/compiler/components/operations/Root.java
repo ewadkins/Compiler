@@ -9,8 +9,8 @@ import org.antlr.v4.runtime.Token;
  */
 public class Root extends BinaryOperation {
 
-    public Root(Expression expression1, Expression expression2, Block parent, Token token) {
-        super(expression1, expression2, parent, token);
+    public Root(Expression expression1, Expression expression2, Token token) {
+        super(expression1, expression2, token);
     }
 
     @Override

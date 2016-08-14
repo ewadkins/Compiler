@@ -9,8 +9,8 @@ import org.antlr.v4.runtime.Token;
  */
 public class ReferenceEqual extends BinaryOperation {
 
-    public ReferenceEqual(Expression expression1, Expression expression2, Block parent, Token token) {
-        super(expression1, expression2, parent, token);
+    public ReferenceEqual(Expression expression1, Expression expression2, Token token) {
+        super(expression1, expression2, token);
     }
 
     @Override

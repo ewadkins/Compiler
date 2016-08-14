@@ -9,8 +9,8 @@ import org.antlr.v4.runtime.Token;
  */
 public abstract class Operation extends Expression {
 
-    public Operation(Block parent, Token token) {
-        super(parent, token);
+    public Operation(Token token) {
+        super(token);
     }
 
 }

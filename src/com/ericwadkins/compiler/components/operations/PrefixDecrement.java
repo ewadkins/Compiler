@@ -13,8 +13,8 @@ import java.util.List;
  */
 public class PrefixDecrement extends UnaryOperation {
 
-    public PrefixDecrement(Expression expression, Block parent, Token token) {
-        super(expression, parent, token);
+    public PrefixDecrement(Expression expression, Token token) {
+        super(expression, token);
     }
 
     @Override

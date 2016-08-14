@@ -13,8 +13,8 @@ import java.util.List;
  */
 public class Not extends UnaryOperation {
 
-    public Not(Expression expression, Block parent, Token token) {
-        super(expression, parent, token);
+    public Not(Expression expression, Token token) {
+        super(expression, token);
     }
 
     @Override

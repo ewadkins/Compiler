@@ -14,14 +14,14 @@ import java.util.List;
  */
 public class Function extends BlockElement {
 
-    protected final Type type;
-    protected final Variable variable;
-    protected final List<Type> types;
-    protected final List<Variable> variables;
+    public final Type type;
+    public final Variable variable;
+    public final List<Type> types;
+    public final List<Variable> variables;
 
     public Function(Type type, Variable variable, List<Type> types, List<Variable> variables,
-                    Block block, Block parent, Token token) {
-        super(block, parent, token);
+                    Block block, Token token) {
+        super(block, token);
         this.type = type;
         this.variable = variable;
         this.types = types;
