@@ -114,13 +114,14 @@ character: CHARACTER;
 bool: BOOLEAN;
 array: '[' ((expression ',')* expression)? ']';
 
-TYPE: 'char' | 'unsigned char' | 'signed char'
-    | 'int' | 'unsigned int' | 'signed int'
-    | 'short int' | 'unsigned short int' | 'signed short int'
-    | 'long int' | 'unsigned long int' | 'signed long int'
-    | 'float' | 'double' | 'long double' | 'wchar_t'
+TYPE: 'char' | 'signed char' | 'unsigned char' | 'wchar_t'
+    | 'int' | 'signed' | 'signed int' | 'unsigned' | 'unsigned int'
+    | 'short' | 'short int' | 'signed short' | 'signed short int' | 'unsigned short' | 'unsigned short int'
+    | 'long' | 'long int' | 'signed long' | 'signed long int' | 'unsigned long' | 'unsigned long int'
+    | 'float' | 'double' | 'long double'
     | 'boolean' | 'void'
     | 'string';
+
 NUMBER: [0-9]+ (',' [0-9]+)* ('.' [0-9]*)?;
 STRING: '"' ('\"' | .)*? ~[\\] '"' | '""'; // Matches anything in double quotes. Allows for escaped double quote character.
 CHARACTER: '\'' '\\'? . '\'' | '\'\'';

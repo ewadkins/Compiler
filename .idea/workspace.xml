@@ -2,91 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eb90f81-a87f-48e4-9292-de5d8d020697" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/DeclarationSet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/StatementSet.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/Declaration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/Instantiation.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/DiscardedStatement.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/NativeBlock.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/OperationTypeMap.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/Compiler.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/Compiler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/CompilerMainListener.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/CompilerMainListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/Assignment.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/Assignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/BitwiseAndAssignment.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/BitwiseAndAssignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/BitwiseLeftAssignment.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/BitwiseLeftAssignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/BitwiseOrAssignment.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/BitwiseOrAssignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/BitwiseRightAssignment.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/BitwiseRightAssignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/BitwiseXorAssignment.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/BitwiseXorAssignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/DifferenceAssignment.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/DifferenceAssignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/DirectAssignment.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/DirectAssignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/ModulusAssignment.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/ModulusAssignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/PowerAssignment.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/PowerAssignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/ProductAssignment.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/ProductAssignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/QuotientAssignment.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/QuotientAssignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/SumAssignment.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/SumAssignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/Block.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/Block.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/BlockElement.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/BlockElement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/BreakStatement.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/BreakStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/ContinueStatement.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/ContinueStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/DoWhileLoop.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/DoWhileLoop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/Element.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/Element.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/ElseIfStatement.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/ElseIfStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/ElseStatement.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/ElseStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/ForLoop.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/ForLoop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/Function.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/Function.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/IfStatement.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/IfStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/ReturnStatement.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/ReturnStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/WhileLoop.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/elements/WhileLoop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Array.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Array.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Boolean.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Boolean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Character.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Character.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Expression.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Expression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Number.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Number.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Primitive.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Primitive.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/String.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/String.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Type.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Type.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Variable.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/expressions/Variable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/And.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/And.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/BinaryOperation.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/BinaryOperation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/BitwiseAnd.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/BitwiseAnd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/BitwiseLeftShift.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/BitwiseLeftShift.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/BitwiseNot.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/BitwiseNot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/BitwiseOr.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/BitwiseOr.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/BitwiseRightShift.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/BitwiseRightShift.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/BitwiseXor.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/BitwiseXor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Call.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Call.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Cast.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Cast.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Difference.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Difference.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Equal.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Equal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/GreaterThan.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/GreaterThan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/GreaterThanOrEqual.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/GreaterThanOrEqual.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/LessThan.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/LessThan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/LessThanOrEqual.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/LessThanOrEqual.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Minus.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Minus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Not.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Not.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/NotEqual.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/NotEqual.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Operation.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Operation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Or.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Or.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Plus.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Plus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/PostfixDecrement.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/PostfixDecrement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/PostfixIncrement.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/PostfixIncrement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Power.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Power.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/PrefixDecrement.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/PrefixDecrement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/PrefixIncrement.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/PrefixIncrement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Product.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Product.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Quotient.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Quotient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/ReferenceEqual.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/ReferenceEqual.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Remainder.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Remainder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Root.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Root.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Subscript.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Subscript.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Sum.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/Sum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/UnaryOperation.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/operations/UnaryOperation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/parser/Compiler.g4" afterPath="$PROJECT_DIR$/src/com/ericwadkins/parser/Compiler.g4" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/parser/Compiler.tokens" afterPath="$PROJECT_DIR$/src/com/ericwadkins/parser/Compiler.tokens" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerBaseListener.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerBaseListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerLexer.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerLexer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerLexer.tokens" afterPath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerLexer.tokens" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerListener.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerParser.java" afterPath="$PROJECT_DIR$/src/com/ericwadkins/parser/CompilerParser.java" />
     </list>
     <ignored path="Compiler.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -112,7 +31,7 @@
       <file leaf-file-name="CompilerMainListener.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/compiler/CompilerMainListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.7777777">
+            <state vertical-scroll-proportion="0.0">
               <caret line="184" column="5" selection-start-line="184" selection-start-column="5" selection-end-line="184" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -121,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Compiler.g4" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Compiler.g4" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/parser/Compiler.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.5555553">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.37567085">
+              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -163,10 +82,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Compiler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Compiler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/compiler/Compiler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61717355">
+            <state vertical-scroll-proportion="0.0">
               <caret line="49" column="81" selection-start-line="49" selection-start-column="81" selection-end-line="49" selection-end-column="81" />
               <folding />
             </state>
@@ -242,8 +161,8 @@
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/QuotientAssignment.java" />
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/components/assignments/SumAssignment.java" />
         <option value="$PROJECT_DIR$/test4.txt" />
-        <option value="$PROJECT_DIR$/src/com/ericwadkins/parser/Compiler.g4" />
         <option value="$PROJECT_DIR$/src/com/ericwadkins/compiler/Compiler.java" />
+        <option value="$PROJECT_DIR$/src/com/ericwadkins/parser/Compiler.g4" />
       </list>
     </option>
   </component>
@@ -283,9 +202,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -470,6 +386,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1023,11 +942,12 @@
       <updated>1470845375313</updated>
       <workItem from="1470845380603" duration="101693000" />
       <workItem from="1471077611195" duration="35342000" />
+      <workItem from="1471211857880" duration="43000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137035000" />
+    <option name="totallyTimeSpent" value="137078000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="140" y="43" width="1400" height="945" extended-state="0" />
@@ -1045,7 +965,6 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1056,6 +975,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -1157,10 +1077,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-          <folding>
-            <element signature="e#500#501#0" expanded="true" />
-            <element signature="e#540#541#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1168,10 +1084,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-          <folding>
-            <element signature="e#500#501#0" expanded="true" />
-            <element signature="e#540#541#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1235,7 +1147,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22995283">
           <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1243,7 +1154,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1251,7 +1161,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18783543">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1259,7 +1168,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1267,7 +1175,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="115" column="33" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1275,9 +1182,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.53667265">
           <caret line="31" column="42" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
-          <folding>
-            <element signature="e#1043#1053#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1285,7 +1189,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1293,9 +1196,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32200357">
           <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
-          <folding>
-            <element signature="e#441#442#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1303,7 +1203,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1311,7 +1210,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1319,7 +1217,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24150269">
           <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1327,7 +1224,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.48300537">
           <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1335,7 +1231,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1351,13 +1246,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18783543">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/compiler/CompilerMainListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7777777">
+        <state vertical-scroll-proportion="0.0">
           <caret line="184" column="5" selection-start-line="184" selection-start-column="5" selection-end-line="184" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1369,10 +1263,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40250447">
           <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-          <folding>
-            <element signature="e#580#581#0" expanded="true" />
-            <element signature="e#633#634#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1380,7 +1270,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37567085">
           <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1388,7 +1277,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37567085">
           <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1396,7 +1284,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37567085">
           <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1404,7 +1291,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37567085">
           <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1412,7 +1298,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37567085">
           <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1420,7 +1305,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37567085">
           <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1428,7 +1312,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37567085">
           <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1436,7 +1319,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37567085">
           <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1444,7 +1326,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37567085">
           <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1452,7 +1333,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37567085">
           <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1470,7 +1350,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1482,18 +1361,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/parser/Compiler.g4">
+    <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/compiler/Compiler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5555553">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="81" selection-start-line="49" selection-start-column="81" selection-end-line="49" selection-end-column="81" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/compiler/Compiler.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ericwadkins/parser/Compiler.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61717355">
-          <caret line="49" column="81" selection-start-line="49" selection-start-column="81" selection-end-line="49" selection-end-column="81" />
+        <state vertical-scroll-proportion="0.37567085">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding />
         </state>
       </provider>
